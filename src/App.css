@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   text-align: center;
 }
@@ -35,4 +39,49 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+h1, h2,h3, h4, h5, h6, label, input, p, a, button, ::placeholder{
+  color: #1F2421;
+  font-family: Poppins;
+}
+
+
+
+input {
+  font-size: 20px;
+}
+::placeholder {
+  font-size: 16px;
+}
+
+label {
+  color: #95989d;
+}
+
+.shadowboxer {
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+.registerbuttons:hover {
+  background-color: #8883f0;
+  transition: 0.3s;
+}
+
+.registerbuttons:hover > h1 {
+  color: white;
+  transition: 0.3s;
+}
+
+.removeunderline {
+  margin-top: 12px;
+  border: 2px solid rgb(241, 245, 249);
+  font-weight: 500;
+}
+
+.removeunderline:hover {
+  margin-top: 12px;
+  border-bottom: 1.5px solid #8883f0;
+  border-opacity: 0;
+  transition: 0.1s;
 }
