@@ -17,6 +17,18 @@
   }
 }
 
+/*
+            <div className='h-screen w-full bg-[#8883f0] flex flex-col items-center'>
+                <h1 className='my-8 text-5xl font-semibold text-white'>Grammie</h1>
+                <div className='flex flex-col'>
+                    <div className='h-20 p-4'>
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+
+*/
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -84,4 +96,17 @@ label {
   border-bottom: 1.5px solid #8883f0;
   border-opacity: 0;
   transition: 0.1s;
+}
+
+#sidebaractive {
+  background-color: #6c65eb;
+}
+
+#ctbackground {
+  background-color: white;
+  transition: 0.3s;
+}
+
+#ctbackground:hover {
+  background-color: rgb(226, 232, 240);
 }

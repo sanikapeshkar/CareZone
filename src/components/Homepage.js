@@ -12,11 +12,10 @@ const Homepage = () => {
             </div>
             <div className='w-2/5 rounded-r-[24px] m-12 ml-0 bg-[#fbfafa] p-8'>
                 <div className='mt-8 flex items-center'>
-                    <div className='rounded-full h-12 w-12 bg-black mr-4'></div>
-                    <h1 className='text-4xl '>Logo/Title Placeholder</h1>
+                    <h1 className='text-4xl font-bold text-[#8883f0]'>Grammie</h1>
                 </div>
-                <h1 className='text-5xl mt-12 font-semibold text-[#8883f0]'>Welcome back</h1>
-                <h3 className='text-2xl text-[#dae3f0]'>Login to your account or create one using google</h3>
+                <h1 className='text-5xl mt-12 text-[#928df1]'>Welcome back</h1>
+                <h3 className='text-2xl text-[#95989d]'>Login to your account or create one using google</h3>
                 <Link to='/register'>
                     <div className='flex justify-center items-center border-[2px] border-[#DAE3F0] rounded-[8px] mt-12 hover:bg-[#DAE3F0] duration-300'>
                         <img src={google} className='h-6'></img>
