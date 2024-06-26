@@ -111,3 +111,24 @@ label {
 #ctbackground:hover {
   background-color: #eff3f6;
 }
+
+#medbackground {
+  background-color: #dee7ee;
+  transition: 0.3s;
+  border: 2px solid #eff3f6;
+}
+
+#medbackground:hover {
+  background-color: #eff3f6;
+  transform: scale(1.02);
+}
+
+#callbackground {
+  background-color: #8883f0;
+  transition: 0.3s;
+  color: white;
+}
+
+#callbackground:hover {
+  transform: scale(1.05);
+}

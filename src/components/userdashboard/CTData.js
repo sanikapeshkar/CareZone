@@ -11,9 +11,9 @@ export const CTData = [
         ctservices: 'Childcare, Elderly Care',
         ctreviews: [
             { name: 'John Doe', review: 'Great caretaker, very responsible.' },
-            { name: 'Jane Smith', review: 'Very kind and attentive.' },
             { name: 'Jane Smith', review: 'Very kind and attentive.' }
-        ]
+        ],
+        status: 'Pending'
     },
     {
         ctname: 'Neha Garg',
@@ -26,7 +26,8 @@ export const CTData = [
         ctreviews: [
             { name: 'Alice Johnson', review: 'Neha is fantastic with kids!' },
             { name: 'Bob Brown', review: 'Very professional and punctual.' }
-        ]
+        ],
+        status: 'Accepted'
     },
     {
         ctname: 'Rahul Sethi',
@@ -39,7 +40,8 @@ export const CTData = [
         ctreviews: [
             { name: 'Michael Lee', review: 'Rahul is very experienced and reliable.' },
             { name: 'Sarah Kim', review: 'He did a great job looking after my parents.' }
-        ]
+        ],
+        status: 'Rejected'
     },
     {
         ctname: 'Kajal Shah',
@@ -52,7 +54,8 @@ export const CTData = [
         ctreviews: [
             { name: 'David Wilson', review: 'Kajal is excellent and very caring.' },
             { name: 'Emma Davis', review: 'Highly recommend Kajal for elderly care.' }
-        ]
+        ],
+        status: 'Pending'
     },
     {
         ctname: 'Chirag Negi',
@@ -65,6 +68,7 @@ export const CTData = [
         ctreviews: [
             { name: 'Chris Evans', review: 'Chirag is very attentive and kind.' },
             { name: 'Olivia Brown', review: 'He is great with pets and kids.' }
-        ]
+        ],
+        status: 'Accepted'
     }
 ];
