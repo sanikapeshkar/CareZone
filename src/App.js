@@ -12,9 +12,10 @@ import CreateEvent from './components/userdashboard/CreateEvent';
 import Medication from './components/userdashboard/Medication';
 import MyRequests from './components/userdashboard/MyRequests';
 import HireCT from './components/userdashboard/HireCT';
+import BasicDatePicker from './components/BasicDatePicker';
+import BasicTimePicker from './components/BasicTimePicker';
 
 function App() {
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -55,6 +56,14 @@ function App() {
     {
       path: "/myrequests",
       element: <MyRequests />,
+    },
+    {
+      path: "/datepicker",
+      element: <BasicDatePicker />,
+    },
+    {
+      path: "/timepicker",
+      element: <BasicTimePicker />,
     },
   ]);
 

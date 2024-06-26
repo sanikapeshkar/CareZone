@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import Sidebar from '../Sidebar';
 import { CTData } from './CTData';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import BasicDatePicker from '../BasicDatePicker';
+import BasicTimePicker from '../BasicTimePicker';
+import HireMePopup from './HireMePopup';
+
+
 
 const HireCT = () => {
     const [selectedCaretaker, setSelectedCaretaker] = useState(CTData[0]);
@@ -9,22 +18,35 @@ const HireCT = () => {
         setSelectedCaretaker(caretaker);
     };
 
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+    const handleOpenPopup = () => {
+        setIsPopupVisible(true);
+    };
+
+    const handleClosePopup = () => {
+        setIsPopupVisible(false);
+    };
+
     return (
         <div className='w-screen flex'>
+
             <Sidebar />
+            {isPopupVisible && <HireMePopup onClose={handleClosePopup} />}
+
             <div className='w-3/4 p-4 ml-auto'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Hire Caretaker</h1>
-                <div className='bg-slate-50 rounded-[24px] p-2 mt-4 shadowboxer flex'>
+                <div className='rounded-[24px] p-2 mt-4 shadowboxer flex'>
                     <div className='w-[30%]'>
                         {CTData.map((val, key) => (
                             <div
                                 key={key}
                                 id='ctbackground'
-                                className='hover:bg-slate-200 h-30 m-4 p-2 flex items-center rounded-4 cursor-pointer'
+                                className='hover:bg-slate-200 h-30 m-2 p-3 flex items-center rounded-4 cursor-pointer'
                                 onClick={() => handleCaretakerClick(val)}
                             >
                                 <img className='h-12 w-12 rounded-full mr-4' src={val.cticon} alt={val.ctname} />
-                                <h1 className='text-[#1f2421]'>{val.ctname}</h1>
+                                <h1 className='text-[#424242] . text-xl font-[500]'>{val.ctname}</h1>
                             </div>
                         ))}
                     </div>
@@ -40,7 +62,8 @@ const HireCT = () => {
                                     <p className=''>Price: {selectedCaretaker.ctprice}</p>
                                 </div>
                                 <div className='flex flex-col gap-4 mr-4 ml-auto'>
-                                    <button className='bg-blue-500 text-white p-2 px-4 rounded'>Hire Me</button>
+                                    <button onClick={handleOpenPopup} className='bg-blue-500 text-white p-2 px-4 rounded'>Hire Me</button>
+
                                     <button className='bg-green-500 text-white p-2 px-4 rounded'>Call Me</button>
                                 </div>
                             </div>
@@ -62,7 +85,7 @@ const HireCT = () => {
                                 <h1 className='text-xl font-bold'>Reviews</h1>
                                 <div className='grid grid-cols-2 gap-2'>
                                     {selectedCaretaker.ctreviews.map((review, index) => (
-                                        <div key={index} className='mt-4 p-4 bg-gray-100 rounded'>
+                                        <div key={index} className='mt-1 p-4 bg-gray-100 rounded'>
                                             <h3 className='text-lg font-semibold'>{review.name}</h3>
                                             <p className='mt-2'>{review.review}</p>
                                         </div>

@@ -103,10 +103,11 @@ label {
 }
 
 #ctbackground {
-  background-color: white;
+  background-color: #dee7ee;
   transition: 0.3s;
+  border: 1px solid #eff3f6;
 }
 
 #ctbackground:hover {
-  background-color: rgb(226, 232, 240);
+  background-color: #eff3f6;
 }

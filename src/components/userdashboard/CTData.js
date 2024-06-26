@@ -11,6 +11,7 @@ export const CTData = [
         ctservices: 'Childcare, Elderly Care',
         ctreviews: [
             { name: 'John Doe', review: 'Great caretaker, very responsible.' },
+            { name: 'Jane Smith', review: 'Very kind and attentive.' },
             { name: 'Jane Smith', review: 'Very kind and attentive.' }
         ]
     },
