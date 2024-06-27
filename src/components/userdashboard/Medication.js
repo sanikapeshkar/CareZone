@@ -1,7 +1,19 @@
-import React from 'react'
-import Sidebar from './../Sidebar'
+import React from 'react';
+import Sidebar from './../Sidebar';
+import { MedicineData } from './MedicineData';
 
-import { MedicineData } from './MedicineData'
+const getFrequencyStyle = (time) => {
+    switch (time) {
+        case 'Morning':
+            return 'bg-yellow-200 text-yellow-800';
+        case 'Noon':
+            return 'bg-blue-200 text-blue-800';
+        case 'Night':
+            return 'bg-gray-200 text-gray-900';
+        default:
+            return '';
+    }
+};
 
 const Medication = () => {
     return (
@@ -26,14 +38,17 @@ const Medication = () => {
                                 <h3 className='mt-2 text-lg bg-[#8883f0] rounded-[30px] text-white p-1 px-4'>{val.dosage}</h3>
                             </div>
                             <h3 className='mt-4 text-slate-500'>Frequency</h3>
-                            <h3 className='mt-2 text-xl'>{val.frequency}</h3>
+                            <div className='mt-2 text-xl flex space-x-2'>
+                                {val.frequency.split(' - ').map((time, i) => (
+                                    <span key={i} className={`p-2 rounded ${getFrequencyStyle(time)}`}>{time}</span>
+                                ))}
+                            </div>
                         </div>
                     ))}
                 </div>
             </div>
-
         </div>
-    )
+    );
 }
 
-export default Medication
+export default Medication;

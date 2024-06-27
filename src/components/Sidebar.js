@@ -1,6 +1,7 @@
 import React from 'react'
 import { SidebarData } from './SidebarData'
 import { Link } from 'react-router-dom'
+import usericon from './media/ctpfp.png'
 
 const Sidebar = () => {
     return (
@@ -14,12 +15,16 @@ const Sidebar = () => {
                 )
             })}
             <div className='m-4 mt-auto flex items-center'>
-                <div className='bg-white rounded-full h-16 w-16 mr-4'>
-                    <img></img>
-                </div>
-                <div className='flex flex-col'>
-                    <h3 className='my-2'>username</h3>
-                    <Link>
+                <Link to="/userprofile">
+                    <div className='rounded-full h-24 w-24 mr-4'>
+                        <img className='w-full' src={usericon}></img>
+                    </div>
+                </Link>
+                <div className='flex flex-col h-24'>
+                    <Link to="/userprofile">
+                        <h3 className='my-2 text-xl'>username</h3>
+                    </Link>
+                    <Link to="/">
                         <h3 className='p-2 px-4 bg-[#ebebeb] text-[#8883f0] rounded-2'>Logout</h3>
                     </Link>
                 </div>

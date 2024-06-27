@@ -14,6 +14,7 @@ import MyRequests from './components/userdashboard/MyRequests';
 import HireCT from './components/userdashboard/HireCT';
 import BasicDatePicker from './components/BasicDatePicker';
 import BasicTimePicker from './components/BasicTimePicker';
+import UserProfile from './components/userdashboard/UserProfile';
 
 function App() {
   const router = createBrowserRouter([
@@ -58,8 +59,8 @@ function App() {
       element: <MyRequests />,
     },
     {
-      path: "/datepicker",
-      element: <BasicDatePicker />,
+      path: "/userprofile",
+      element: <UserProfile />,
     },
     {
       path: "/timepicker",
