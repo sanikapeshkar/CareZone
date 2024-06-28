@@ -13,7 +13,8 @@ export const CTData = [
             { name: 'John Doe', review: 'Great caretaker, very responsible.' },
             { name: 'Jane Smith', review: 'Very kind and attentive.' }
         ],
-        status: 'Pending'
+        status: 'Pending',
+        ctphone: '5456543210'
     },
     {
         ctname: 'Neha Garg',
@@ -27,7 +28,8 @@ export const CTData = [
             { name: 'Alice Johnson', review: 'Neha is fantastic with kids!' },
             { name: 'Bob Brown', review: 'Very professional and punctual.' }
         ],
-        status: 'Accepted'
+        status: 'Accepted',
+        ctphone: '9876586710'
     },
     {
         ctname: 'Rahul Sethi',
@@ -41,7 +43,8 @@ export const CTData = [
             { name: 'Michael Lee', review: 'Rahul is very experienced and reliable.' },
             { name: 'Sarah Kim', review: 'He did a great job looking after my parents.' }
         ],
-        status: 'Rejected'
+        status: 'Rejected',
+        ctphone: '9345543210'
     },
     {
         ctname: 'Kajal Shah',
@@ -55,7 +58,8 @@ export const CTData = [
             { name: 'David Wilson', review: 'Kajal is excellent and very caring.' },
             { name: 'Emma Davis', review: 'Highly recommend Kajal for elderly care.' }
         ],
-        status: 'Pending'
+        status: 'Pending',
+        ctphone: '1236543210'
     },
     {
         ctname: 'Chirag Negi',
@@ -69,6 +73,9 @@ export const CTData = [
             { name: 'Chris Evans', review: 'Chirag is very attentive and kind.' },
             { name: 'Olivia Brown', review: 'He is great with pets and kids.' }
         ],
-        status: 'Accepted'
+        status: 'Accepted',
+        ctphone: '9876242210'
     }
 ];
+
+export default CTData;

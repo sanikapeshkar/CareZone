@@ -17,18 +17,6 @@
   }
 }
 
-/*
-            <div className='h-screen w-full bg-[#8883f0] flex flex-col items-center'>
-                <h1 className='my-8 text-5xl font-semibold text-white'>Grammie</h1>
-                <div className='flex flex-col'>
-                    <div className='h-20 p-4'>
-                        <h1>Dashboard</h1>
-                    </div>
-                </div>
-            </div>
-
-*/
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -105,7 +93,7 @@ label {
 #ctbackground {
   background-color: #dee7ee;
   transition: 0.3s;
-  border: 1px solid #eff3f6;
+  border: 2px solid #eff3f6;
 }
 
 #ctbackground:hover {
@@ -115,7 +103,7 @@ label {
 #medbackground {
   background-color: #dee7ee;
   transition: 0.3s;
-  border: 2px solid #eff3f6;
+  border: 2px solid #d6d9dc;
 }
 
 #medbackground:hover {
@@ -132,3 +120,25 @@ label {
 #callbackground:hover {
   transform: scale(1.05);
 }
+
+#upbackground {
+    background-color: #dee7ee;
+    transition: 0.3s;
+    border: 2px solid #d3d7da;
+  }
+  
+  #upbackground:hover {
+    background-color: #0083e7;
+  }
+
+  /* global.css */
+.z-50 {
+  z-index: 50;
+}
+
+.z-40 {
+  z-index: 40;
+}
+
+/* Adjust these values as necessary */
+
