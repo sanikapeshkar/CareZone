@@ -8,6 +8,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import BasicDatePicker from '../BasicDatePicker';
 import BasicTimePicker from '../BasicTimePicker';
 import HireMePopup from './HireMePopup';
+import star from './../media/star.png';
 
 
 
@@ -86,7 +87,13 @@ const HireCT = () => {
                                 <div className='grid grid-cols-2 gap-2'>
                                     {selectedCaretaker.ctreviews.map((review, index) => (
                                         <div key={index} className='mt-1 p-4 bg-gray-100 rounded'>
-                                            <h3 className='text-lg font-semibold'>{review.name}</h3>
+                                            <div className='flex w-full justify-between'>
+                                                <h3 className='text-lg font-semibold'>Anonymous</h3>
+                                                <div className='flex items-center'>
+                                                    <h1 className='text-xl mr-1'>{review.rating}</h1>
+                                                    <img className='w-6 h-6' src={star}></img>
+                                                </div>
+                                            </div>
                                             <p className='mt-2'>{review.review}</p>
                                         </div>
                                     ))}

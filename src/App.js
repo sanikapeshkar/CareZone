@@ -16,6 +16,12 @@ import BasicDatePicker from './components/BasicDatePicker';
 import BasicTimePicker from './components/BasicTimePicker';
 import UserProfile from './components/userdashboard/UserProfile';
 
+import CTProfile from './components/CTDashboard/CTProfile';
+import CTRequests from './components/CTDashboard/CTRequests';
+import CTDashboard from './components/CTDashboard/CTDashboard';
+import CTCustomers from './components/CTDashboard/CTCustomers';
+import CTReviews from './components/CTDashboard/CTReviews';
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -65,6 +71,26 @@ function App() {
     {
       path: "/timepicker",
       element: <BasicTimePicker />,
+    },
+    {
+      path: "/ctprofile",
+      element: <CTProfile />,
+    },
+    {
+      path: "/ctrequests",
+      element: <CTRequests />,
+    },
+    {
+      path: "/ctdashboard",
+      element: <CTDashboard />,
+    },
+    {
+      path: "/ctcustomers",
+      element: <CTCustomers />,
+    },
+    {
+      path: "/ctreviews",
+      element: <CTReviews />,
     },
   ]);
 

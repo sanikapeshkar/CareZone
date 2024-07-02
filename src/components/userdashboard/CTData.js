@@ -10,8 +10,8 @@ export const CTData = [
         ctexperience: '5 years',
         ctservices: 'Childcare, Elderly Care',
         ctreviews: [
-            { name: 'John Doe', review: 'Great caretaker, very responsible.' },
-            { name: 'Jane Smith', review: 'Very kind and attentive.' }
+            { name: 'John Doe', rating: 5, review: 'Great caretaker, very responsible.' },
+            { name: 'Jane Smith', rating: 5, review: 'Very kind and attentive.' }
         ],
         status: 'Pending',
         ctphone: '5456543210'
@@ -25,8 +25,8 @@ export const CTData = [
         ctexperience: '5 years',
         ctservices: 'Childcare, Elderly Care',
         ctreviews: [
-            { name: 'Alice Johnson', review: 'Neha is fantastic with kids!' },
-            { name: 'Bob Brown', review: 'Very professional and punctual.' }
+            { name: 'Alice Johnson', rating: 5, review: 'Neha is fantastic with kids!' },
+            { name: 'Bob Brown', rating: 5, review: 'Very professional and punctual.' }
         ],
         status: 'Accepted',
         ctphone: '9876586710'
@@ -40,8 +40,8 @@ export const CTData = [
         ctexperience: '5 years',
         ctservices: 'Childcare, Elderly Care',
         ctreviews: [
-            { name: 'Michael Lee', review: 'Rahul is very experienced and reliable.' },
-            { name: 'Sarah Kim', review: 'He did a great job looking after my parents.' }
+            { name: 'Michael Lee', rating: 5, review: 'Rahul is very experienced and reliable.' },
+            { name: 'Sarah Kim', rating: 5, review: 'He did a great job looking after my parents.' }
         ],
         status: 'Rejected',
         ctphone: '9345543210'
@@ -55,8 +55,8 @@ export const CTData = [
         ctexperience: '5 years',
         ctservices: 'Childcare, Elderly Care',
         ctreviews: [
-            { name: 'David Wilson', review: 'Kajal is excellent and very caring.' },
-            { name: 'Emma Davis', review: 'Highly recommend Kajal for elderly care.' }
+            { name: 'David Wilson', rating: 5, review: 'Kajal is excellent and very caring.' },
+            { name: 'Emma Davis', rating: 5, review: 'Highly recommend Kajal for elderly care.' }
         ],
         status: 'Pending',
         ctphone: '1236543210'
@@ -70,8 +70,8 @@ export const CTData = [
         ctexperience: '5 years',
         ctservices: 'Childcare, Elderly Care',
         ctreviews: [
-            { name: 'Chris Evans', review: 'Chirag is very attentive and kind.' },
-            { name: 'Olivia Brown', review: 'He is great with pets and kids.' }
+            { name: 'Chris Evans', rating: 5, review: 'Chirag is very attentive and kind.' },
+            { name: 'Olivia Brown', rating: 5, review: 'He is great with pets and kids.' }
         ],
         status: 'Accepted',
         ctphone: '9876242210'
