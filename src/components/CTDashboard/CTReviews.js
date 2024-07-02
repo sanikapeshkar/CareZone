@@ -21,7 +21,7 @@ const CTReviews = () => {
                 <div className='grid grid-cols-2 gap-8 gap-y-6 w-full mt-4'>
                     {reviews.map((val, key) => (
                         <div key={key} id='medbackground' className='flex justify-between p-8 px-12 rounded-4'>
-                            <div className='flex flex-col items-center'>
+                            <div className='flex flex-col items-center w-[40%]'>
                                 <img className='w-24 h-24' src={val.icon} alt='User'></img>
                                 <h1 className='mt-2 text-xl'>{val.name}</h1>
                             </div>
