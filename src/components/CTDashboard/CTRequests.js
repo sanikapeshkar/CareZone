@@ -6,9 +6,9 @@ const CTRequests = () => {
     return (
         <div className='flex w-screen'>
             <CTSidebar />
-            <div className='w-3/4 p-4 ml-auto'>
+            <div className='w-4/5 p-4 ml-auto h-screen'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>My Requests</h1>
-                <div className='bg-slate-100 mt-8 pb-4 rounded-4 shadowboxer'>
+                <div className='bg-slate-100 mt-8 pb-4 rounded-4 shadowboxer h-[90%] overflow-scroll'>
                     <div className='grid grid-cols-5 w-full justify-between items-center pt-4 px-8'>
                         <h1 className='font-semibold text-2xl w-[180px]'>Name</h1>
                         <h1 className='font-semibold ml-12 w-[150px] text-center text-2xl'>Location</h1>

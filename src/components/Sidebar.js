@@ -5,7 +5,7 @@ import usericon from './media/ctpfp.png'
 
 const Sidebar = () => {
     return (
-        <div className='w-1/4 h-screen bg-[#8883f0] flex flex-col items-center fixed'>
+        <div className='w-1/5 h-screen bg-[#8883f0] flex flex-col items-center fixed'>
             <h1 className='my-8 text-5xl font-semibold text-white'>Grammie</h1>
             {SidebarData.map((val, key) => {
                 return (
@@ -14,7 +14,7 @@ const Sidebar = () => {
                     </div>
                 )
             })}
-            <div className='m-4 mt-auto flex items-center'>
+            <div className='mb-4 ml-2 mr-auto mt-auto flex items-center'>
                 <Link to="/userprofile">
                     <div className='rounded-full h-24 w-24 mr-4'>
                         <img className='w-full' src={usericon}></img>

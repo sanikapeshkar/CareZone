@@ -19,7 +19,7 @@ const CTProfile = () => {
         <div className='flex w-screen'>
             <CTSidebar />
             {isProfilePopupVisible && <EditProfilePopup onClose={handleCloseProfilePopup} />}
-            <div className='w-3/4 ml-auto'>
+            <div className='w-4/5 ml-auto h-screen'>
                 <div className='flex justify-between items-center px-8 mt-8'>
                     <div className='flex items-center'>
                         <img className='w-24 h-24 mr-8' src={cticon} alt='User'></img>
@@ -38,7 +38,7 @@ const CTProfile = () => {
                         </button>
                     </div>
                 </div>
-                <div className='mt-12 flex flex-col w-[90%] mx-auto rounded-4 px-12 bg-slate-50 shadowboxer'>
+                <div className='mt-12 flex flex-col w-[95%] h-[70%] mx-auto rounded-4 px-12'>
                     <div className='flex items-center my-4'>
                         <h1 className='text-xl w-2/5 text-[#6b6b6b]'>Age</h1>
                         <p className='text-xl font-semibold'>{CTProfileData[0].ctage}</p>

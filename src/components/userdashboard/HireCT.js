@@ -35,10 +35,10 @@ const HireCT = () => {
             <Sidebar />
             {isPopupVisible && <HireMePopup onClose={handleClosePopup} />}
 
-            <div className='w-3/4 p-4 ml-auto'>
+            <div className='w-4/5 p-4 ml-auto h-screen'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Hire Caretaker</h1>
-                <div className='rounded-[24px] p-2 mt-4 shadowboxer flex'>
-                    <div className='w-[30%]'>
+                <div className=' h-[90%] rounded-[24px] p-2 mt-4 shadowboxer flex'>
+                    <div className='w-[30%] bg-gray-300 rounded-4 overflow-scroll'>
                         {CTData.map((val, key) => (
                             <div
                                 key={key}
@@ -51,9 +51,8 @@ const HireCT = () => {
                             </div>
                         ))}
                     </div>
-                    <div className='w-1 h-full bg-black'></div>
                     {selectedCaretaker && (
-                        <div className='p-4 w-2/3'>
+                        <div className='p-4 w-[80%]'>
                             <div className='p-4 pl-2 rounded flex items-start'>
                                 <img className='h-20 w-20 rounded-full mr-8' src={selectedCaretaker.cticon} alt={selectedCaretaker.ctname} />
                                 <div className=''>

@@ -6,7 +6,7 @@ import CTProfileData from './CTProfileData'
 
 const CTSidebar = () => {
     return (
-        <div className='w-1/4 h-screen bg-[#8883f0] flex flex-col items-center fixed'>
+        <div className='w-1/5 h-screen bg-[#8883f0] flex flex-col items-center fixed'>
             <h1 className='my-8 text-5xl font-semibold text-white'>Grammie</h1>
             {CTSidebarData.map((val, key) => {
                 return (
@@ -15,7 +15,7 @@ const CTSidebar = () => {
                     </div>
                 )
             })}
-            <div className='m-4 mt-auto flex items-center'>
+            <div className='mb-2 ml-2 mt-auto flex items-center mr-auto ml-0'>
                 <Link to="/ctprofile">
                     <div className='rounded-full h-24 w-24 mr-4'>
                         <img className='w-full' src={usericon}></img>

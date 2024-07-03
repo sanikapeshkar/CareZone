@@ -18,7 +18,7 @@ const CTDashboard = () => {
     return (
         <div className='w-screen'>
             <CTSidebar />
-            <div className='w-3/4 ml-auto p-4'>
+            <div className='w-4/5 ml-auto p-4'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Dashboard</h1>
                 <div className='grid grid-cols-2 gap-4 w-full mt-8'>
                     <div className='flex flex-col items-center'>

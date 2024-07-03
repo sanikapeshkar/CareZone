@@ -14,11 +14,11 @@ const CTRegistration = () => {
                         </div>
                         <div className='my-2 w-full grid grid-cols-2 items-center'>
                             <label className='text-xl'>Mobile Number</label>
-                            <input placeholder='+91' className='rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent'></input>
+                            <input type='number' placeholder='+91' className='rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent'></input>
                         </div>
                         <div className='my-2 w-full grid grid-cols-2 items-center'>
                             <label className='text-xl'>Age</label>
-                            <input placeholder='(18-50 years)' className='rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent'></input>
+                            <input type='number' placeholder='(18-50 years)' className='rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent'></input>
                         </div>
                         <div className='my-2 w-full grid grid-cols-2 items-center'>
                             <label className='text-xl'>Gender</label>
@@ -34,7 +34,7 @@ const CTRegistration = () => {
                         </div>
                         <div className='my-3 w-full grid grid-cols-2 items-center'>
                             <label className='text-xl'>Work Experience</label>
-                            <input placeholder='in years' className='rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent'></input>
+                            <input type='number' placeholder='in years' className='rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent'></input>
                         </div>
                         <div className='my-3 w-full grid grid-cols-2 items-center'>
                             <label className='text-xl'>Services Provided</label>

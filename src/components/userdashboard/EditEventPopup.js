@@ -34,7 +34,7 @@ const EditEventPopup = ({ onClose }) => {
                         </div>
                         <div className='my-2 w-full grid grid-cols-2 items-center'>
                             <label className='text-xl text-[#1a1a1a]'>Location</label>
-                            <input placeholder='Event Title' className='rounded-2 border-1 border-[#bcb9bf] p-2 px-2 bg-transparent placeholder:text-[#646768] hover:border-[#646768]'></input>
+                            <input placeholder='Location' className='rounded-2 border-1 border-[#bcb9bf] p-2 px-2 bg-transparent placeholder:text-[#646768] hover:border-[#646768]'></input>
                         </div>
                         <div className='my-2 w-full grid grid-cols-2 items-center'>
                             <label className='text-xl text-[#1a1a1a]'>Event Date</label>
@@ -46,7 +46,7 @@ const EditEventPopup = ({ onClose }) => {
                         </div>
                         <div className='my-2 w-full grid grid-cols-2 items-center'>
                             <label className='text-xl text-[#1a1a1a]'>Duration</label>
-                            <input placeholder='(in hours)' className='rounded-2 border-1 border-[#bcb9bf] p-2 px-2 bg-transparent placeholder:text-[#646768] hover:border-[#646768]'></input>
+                            <input type='number' placeholder='(in hours)' className='rounded-2 border-1 border-[#bcb9bf] p-2 px-2 bg-transparent placeholder:text-[#646768] hover:border-[#646768]'></input>
                         </div>
                         <div className='my-2 w-full grid grid-cols-2 items-center'>
                             <label className='text-xl text-[#1a1a1a]'>Last Date to Enroll</label>

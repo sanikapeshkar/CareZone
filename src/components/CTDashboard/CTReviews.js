@@ -12,7 +12,7 @@ const CTReviews = () => {
     return (
         <div className='flex w-screen'>
             <CTSidebar />
-            <div className='w-3/4 ml-auto p-4'>
+            <div className='w-4/5 ml-auto p-4'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Reviews</h1>
                 <div className='flex justify-between items-center w-full pr-16 mt-4'>
                     <h1 className='text-xl'>Avg Rating: {avgRating.toFixed(1)}/5</h1>
@@ -23,7 +23,7 @@ const CTReviews = () => {
                         <div key={key} id='medbackground' className='flex justify-between p-8 px-12 rounded-4'>
                             <div className='flex flex-col items-center w-[40%]'>
                                 <img className='w-24 h-24' src={val.icon} alt='User'></img>
-                                <h1 className='mt-2 text-xl'>{val.name}</h1>
+                                <h1 className='mt-2 text-xl'>Anonymous</h1>
                             </div>
                             <div className='flex flex-col '>
                                 <div className='flex items-center ml-auto'>

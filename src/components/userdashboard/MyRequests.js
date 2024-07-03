@@ -19,7 +19,7 @@ const MyRequests = () => {
     return (
         <div className='flex w-screen'>
             <Sidebar />
-            <div className='w-3/4 p-4 ml-auto'>
+            <div className='w-4/5 p-4 ml-auto h-[90%] overflow-scroll'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>My Requests</h1>
                 <div className='bg-slate-100 mt-8 pb-4 rounded-4 shadowboxer'>
                     <div className='grid grid-cols-3 w-full justify-between items-center pt-4 px-16'>

@@ -35,10 +35,10 @@ const AttendEvent = () => {
             <Sidebar />
             {isPopupVisible && <HireMePopup onClose={handleClosePopup} />}
 
-            <div className='w-3/4 p-4 ml-auto'>
+            <div className='w-4/5 p-4 ml-auto h-screen'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Attend Event</h1>
-                <div className='rounded-[24px] p-2 mt-4 shadowboxer flex w-[95%]'>
-                    <div className='w-[30%] bg-gray-300 rounded-[16px]'>
+                <div className='rounded-[24px] p-2 mt-4 shadowboxer flex w-[100%] h-[90%]'>
+                    <div className='w-[30%] bg-gray-300 rounded-[16px] overflow-scroll'>
                         {EventData.map((val, key) => (
                             <div
                                 key={key}
@@ -55,9 +55,9 @@ const AttendEvent = () => {
                             <div className='p-4 w-full'>
                                 <div className='flex flex-row items-center justify-between'>
                                     <h1 className='text-xl'>Live, Laugh and Love</h1>
-                                    <div className='flex ml-auto'>
-                                        <button className='m-1 p-2 px-4 rounded-3 bg-blue-500 hover:scale-[1.02] duration-100'>Enroll Now</button>
-                                        <button className='m-1 p-2 px-4 rounded-3 bg-green-400 hover:scale-[1.02] duration-100'>Call Now</button>
+                                    <div className='flex flex-col items-center ml-auto'>
+                                        <button className='w-[200px] m-1 p-2 px-4 rounded-3 bg-blue-500 hover:scale-[1.02] duration-100'>Enroll Now</button>
+                                        <button className='w-[200px] m-1 p-2 px-4 rounded-3 bg-green-400 hover:scale-[1.02] duration-100'>Call Now</button>
                                     </div>
                                 </div>
                                 <h1 className='text-4xl text-[#8883f0] font-semibold my-2'>{selectedEvent.eventname}</h1>

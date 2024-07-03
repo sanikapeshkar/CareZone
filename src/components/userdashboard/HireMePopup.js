@@ -47,7 +47,7 @@ const HireMePopup = ({ onClose }) => {
                     <input className='scale-75 py-2 px-1 border-[0.5px] rounded-[3px] border-[#c4c4c4] w-[200px] hover:border-black'></input>
                 </div>
                 <div className='w-1/2 ml-auto flex justify-end mt-2'>
-                    <button className='ml-auto bg-[#8883f0] p-2 px-3 rounded-2'>Submit</button>
+                    <button className='ml-auto bg-[#8883f0] p-2 px-3 rounded-2 text-white'>Submit</button>
                 </div>
             </div>
         </div>

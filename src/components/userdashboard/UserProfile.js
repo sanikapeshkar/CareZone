@@ -106,7 +106,7 @@ const UserProfile = () => {
             <Sidebar />
             {isEditPopupVisible && <EditEventPopup onClose={handleCloseEditPopup} />}
             {isProfilePopupVisible && <EditProfilePopup onClose={handleCloseProfilePopup} />}
-            <div className='w-3/4 ml-auto p-8'>
+            <div className='w-4/5 ml-auto p-8'>
                 <div className='flex justify-between items-center px-8'>
                     <div className='flex items-center'>
                         <img className='w-24 h-24 mr-8' src={usericon} alt='User'></img>
@@ -142,7 +142,10 @@ const UserProfile = () => {
                     </button>
                 </div>
                 <div className='w-[95%] bg-[#eff3f6] h-[2px] m-8 mx-auto mt-4'></div>
-                {renderActiveComponent()}
+                <div className='h-[55%] overflow-scroll'>
+                    {renderActiveComponent()}
+                </div>
+
             </div>
         </div>
     );
