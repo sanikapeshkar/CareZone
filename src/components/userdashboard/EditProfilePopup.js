@@ -46,7 +46,7 @@ const EditProfilePopup = ({ onClose }) => {
                             <input type='number' placeholder='+91' className='rounded-2 border-1 border-[#bcb9bf] p-2 px-2 bg-transparent placeholder:text-[#646768] hover:border-[#646768]'></input>
                         </div>
                     </div>
-                    <button className='mr-auto mt-4 p-2 px-4 rounded-[30px] border-0 bg-[#8883f0] text-white text-xl font-normal'>Create this event</button>
+                    <button className='mr-auto mt-4 p-2 px-4 rounded-[30px] border-0 bg-[#8883f0] text-white text-xl font-normal'>Save Changes</button>
                 </form>
             </div>
         </div>

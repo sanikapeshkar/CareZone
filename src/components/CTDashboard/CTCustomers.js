@@ -26,27 +26,27 @@ const CTCustomers = () => {
                     <div className='w-[25%] bg-slate-50 p-2'>
                         <div
                             id='medbackground'
-                            className='hover:bg-slate-200 h-30 p-3 flex items-center cursor-pointer border-0 rounded-2 mb-2 h-[32%]'
+                            className='hover:bg-slate-200 h-30 p-3 flex items-center cursor-pointer border-0 rounded-2 mb-2'
                             onClick={() => setView('all')}
                         >
                             <h1 className='text-[#424242] text-xl font-[500]'>All Customers</h1>
                         </div>
                         <div
                             id='medbackground'
-                            className='hover:bg-slate-200 h-30 p-3 flex items-center cursor-pointer border-0 rounded-2 mb-2 h-[32%]'
+                            className='hover:bg-slate-200 h-30 p-3 flex items-center cursor-pointer border-0 rounded-2 mb-2'
                             onClick={() => setView('current')}
                         >
                             <h1 className='text-[#424242] text-xl font-[500]'>Current Customers</h1>
                         </div>
                         <div
                             id='medbackground'
-                            className='hover:bg-slate-200 h-30 p-3 flex items-center cursor-pointer border-0 rounded-2 mb-2 h-[33%]'
+                            className='hover:bg-slate-200 h-30 p-3 flex items-center cursor-pointer border-0 rounded-2 mb-2'
                             onClick={() => setView('past')}
                         >
                             <h1 className='text-[#424242] text-xl font-[500]'>Past Customers</h1>
                         </div>
                     </div>
-                    <div className='w-[75%] overflow-scroll'>
+                    <div className='w-[75%] overflow-y-scroll'>
                         <div className='pb-4'>
                             <div className='grid grid-cols-3 w-full justify-between items-center pt-4 px-4 mb-4'>
                                 <h1 className='font-semibold text-2xl'>Name</h1>

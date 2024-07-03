@@ -12,7 +12,7 @@ const CTReviews = () => {
     return (
         <div className='flex w-screen'>
             <CTSidebar />
-            <div className='w-4/5 ml-auto p-4'>
+            <div className='w-4/5 ml-auto p-4 overflow-hidden'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Reviews</h1>
                 <div className='flex justify-between items-center w-full pr-16 mt-4'>
                     <h1 className='text-xl'>Avg Rating: {avgRating.toFixed(1)}/5</h1>

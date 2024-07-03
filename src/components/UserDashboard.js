@@ -25,11 +25,14 @@ const Dashboard = () => {
                         </div>
 
                     </div>
-                    <div className='flex flex-col p-4 rounded-4 bg-slate-200'>
+                    <div className='flex flex-col p-4'>
                         <h1 className='bg-[#8883f0] text-white font-semibold text-center text-2xl mb-2 p-2 rounded-2'>Calendar</h1>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DateCalendar />
-                        </LocalizationProvider>
+                        <div className='rounded-4 bg-slate-200'>
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DateCalendar />
+                            </LocalizationProvider>
+                        </div>
+
                     </div>
                     <div className='flex flex-col p-4 rounded-4 relative -top-32'>
                         <h1 className='bg-[#8883f0] text-white font-semibold text-center text-2xl mb-2 p-2 rounded-2'>Upcoming Event</h1>
