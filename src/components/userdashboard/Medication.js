@@ -19,10 +19,10 @@ const Medication = () => {
     return (
         <div className='w-screen flex hiddenx'>
             <Sidebar />
-            <div className='w-4/5 ml-auto p-4 pt-0 yflow'>
+            <div className='w-4/5 ml-auto p-4 pt-0 hiddenx'>
                 <div className='bg-white fixed w-3/4 pr-12 flex items-center border-b-2 border-b-[#eff3f6] py-4'>
                     <div>
-                        <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Order Medication Here</h1>
+                        <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>2Order Medication Here</h1>
                     </div>
                     <div className='grid grid-cols-3 gap-4 ml-auto items-center'>
                         <a target='blank' className='text-[#525252] px-4 p-1 border-2 border-[#525252] rounded-[20px] hover:bg-[#525252] hover:text-white duration-200 text-center' href='https://janaushadhi.gov.in/'>JanAushadi</a>
@@ -30,7 +30,7 @@ const Medication = () => {
                         <a target='blank' className='text-[#525252] px-4 p-1 border-2 border-[#525252] rounded-[20px] hover:bg-[#525252] hover:text-white duration-200 text-center' href='https://www.wellnessforever.com/'>Wellness</a>
                     </div>
                 </div>
-                <div className='grid grid-cols-2 gap-4 w-full mt-32 yflow'>
+                <div className='grid grid-cols-2 gap-4 w-full mt-32 hiddenx'>
                     {MedicineData.map((val, index) => (
                         <div id='medbackground' key={index} className='mt-1 p-3 px-4 rounded-[24px] yflow'>
                             <div className='flex justify-between items-center pr-8'>
