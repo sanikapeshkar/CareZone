@@ -141,4 +141,6 @@ label {
 }
 
 /* Adjust these values as necessary */
-
+* {
+  overflow-x: hidden;
+}
