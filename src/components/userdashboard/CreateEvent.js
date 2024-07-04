@@ -5,9 +5,9 @@ import BasicTimePicker from '../BasicTimePicker'
 
 const CreateEvent = () => {
     return (
-        <div className='w-screen flex'>
+        <div className='w-screen flex overflow-x-hidden'>
             <Sidebar />
-            <div className='w-4/5 ml-auto p-4'>
+            <div className='w-4/5 ml-auto p-4 overflow-x-hidden'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Create Event</h1>
                 <form className='w-full mt-4 flex flex-col'>
                     <div className='flex flex-col w-full mx-auto bg-slate-100 rounded-lg p-4'>

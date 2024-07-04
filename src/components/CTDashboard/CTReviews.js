@@ -10,9 +10,9 @@ const CTReviews = () => {
     const avgRating = reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
 
     return (
-        <div className='flex w-screen'>
+        <div className='flex w-screen overflow-x-hidden'>
             <CTSidebar />
-            <div className='w-4/5 ml-auto p-4 overflow-hidden'>
+            <div className='w-4/5 ml-auto p-4 overflow-x-hidden'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Reviews</h1>
                 <div className='flex justify-between items-center w-full pr-16 mt-4'>
                     <h1 className='text-xl'>Avg Rating: {avgRating.toFixed(1)}/5</h1>

@@ -18,7 +18,7 @@ const UserProfile = () => {
         switch (activeComponent) {
             case 'HiredCaretakers':
                 return (
-                    <div className='px-8 grid grid-cols-3 gap-4'>
+                    <div className='px-8 grid grid-cols-3 gap-4 overflow-x-hidden'>
                         {CTData.map((val, key) => (
                             <div id='medbackground' key={key} className='p-4 rounded-4 border-0'>
                                 <div className='w-64'>
@@ -35,7 +35,7 @@ const UserProfile = () => {
                 );
             case 'MyEvents':
                 return (
-                    <div className='px-8 grid grid-cols-2 gap-2'>
+                    <div className='px-8 grid grid-cols-2 gap-2 overflow-x-hidden'>
                         {EventData.map((val, key) => (
                             <div id='medbackground' key={key} className='p-4 rounded-4 border-0'>
                                 <div className='flex justify-between items-center'>
@@ -59,7 +59,7 @@ const UserProfile = () => {
                 );
             case 'MedicalHistory':
                 return (
-                    <div className='px-8 grid grid-cols-2 gap-2'>
+                    <div className='px-8 grid grid-cols-2 gap-2 overflow-x-hidden'>
                         {UserData[0].usermedicalhistory.map((history, key) => (
                             <div id='medbackground' key={key} className='p-4 rounded-4 border-0'>
                                 <div className='flex flex-col pr-8'>
@@ -106,7 +106,7 @@ const UserProfile = () => {
             <Sidebar />
             {isEditPopupVisible && <EditEventPopup onClose={handleCloseEditPopup} />}
             {isProfilePopupVisible && <EditProfilePopup onClose={handleCloseProfilePopup} />}
-            <div className='w-4/5 ml-auto p-8'>
+            <div className='w-4/5 ml-auto p-8 h-screen overflow-hidden'>
                 <div className='flex justify-between items-center px-8'>
                     <div className='flex items-center'>
                         <img className='w-24 h-24 mr-8' src={usericon} alt='User'></img>
@@ -142,7 +142,7 @@ const UserProfile = () => {
                     </button>
                 </div>
                 <div className='w-[95%] bg-[#eff3f6] h-[2px] m-8 mx-auto mt-4'></div>
-                <div className='h-[55%] overflow-scroll'>
+                <div className='h-[55%] overflow-y-scroll overflow-x-hidden'>
                     {renderActiveComponent()}
                 </div>
 

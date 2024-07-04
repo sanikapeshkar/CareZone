@@ -18,7 +18,7 @@ const CTCustomers = () => {
     const customersToDisplay = filterCustomers();
 
     return (
-        <div className='flex w-screen'>
+        <div className='flex w-screen overflow-x-hidden'>
             <CTSidebar />
             <div className='w-4/5 p-4 ml-auto h-screen'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Customers</h1>
