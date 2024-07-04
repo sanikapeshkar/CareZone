@@ -17,7 +17,7 @@ const getFrequencyStyle = (time) => {
 
 const Medication = () => {
     return (
-        <div className='w-screen flex overflow-x-hidden'>
+        <div className='w-screen flex hiddenx'>
             <Sidebar />
             <div className='w-4/5 ml-auto p-4 pt-0 yflow'>
                 <div className='bg-white fixed w-3/4 pr-12 flex items-center border-b-2 border-b-[#eff3f6] py-4'>
