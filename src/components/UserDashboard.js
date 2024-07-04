@@ -10,7 +10,7 @@ const Dashboard = () => {
     return (
         <div className='w-screen flex overflow-x-hidden'>
             <Sidebar />
-            <div className='w-4/5 p-4 ml-auto overflow-x=hidden'>
+            <div className='w-4/5 p-4 ml-auto yflow'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Dashboard</h1>
                 <div className='w-full p-4 grid grid-cols-2 gap-4'>
                     <div className='flex flex-col p-4 rounded-4'>

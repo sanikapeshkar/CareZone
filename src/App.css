@@ -140,7 +140,6 @@ label {
   z-index: 40;
 }
 
-/* Adjust these values as necessary */
-* {
+.hiddenx {
   overflow-x: hidden;
 }
