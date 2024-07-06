@@ -38,7 +38,7 @@ const HireCT = () => {
             <div className='w-4/5 p-4 ml-auto h-screen'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Hire Caretaker</h1>
                 <div className=' h-[90%] rounded-[24px] p-2 mt-4 shadowboxer flex'>
-                    <div className='w-[30%] bg-gray-300 rounded-4 overflow-scroll'>
+                    <div className='w-[30%] bg-gray-300 rounded-4 overflow-scroll overflow-x-hidden'>
                         {CTData.map((val, key) => (
                             <div
                                 key={key}
@@ -52,7 +52,7 @@ const HireCT = () => {
                         ))}
                     </div>
                     {selectedCaretaker && (
-                        <div className='p-4 w-[80%]'>
+                        <div className='p-4 w-[80%] overflow-scroll'>
                             <div className='p-4 pl-2 rounded flex items-start'>
                                 <img className='h-20 w-20 rounded-full mr-8' src={selectedCaretaker.cticon} alt={selectedCaretaker.ctname} />
                                 <div className=''>
@@ -81,9 +81,9 @@ const HireCT = () => {
                                     <p className='text-xl'>{selectedCaretaker.ctservices}</p>
                                 </div>
                             </div>
-                            <div className='mt-8'>
+                            <div className='mt-8 '>
                                 <h1 className='text-xl font-bold'>Reviews</h1>
-                                <div className='grid grid-cols-2 gap-2'>
+                                <div className='grid grid-cols-2 gap-2 overflow-scroll'>
                                     {selectedCaretaker.ctreviews.map((review, index) => (
                                         <div key={index} className='mt-1 p-4 bg-gray-100 rounded'>
                                             <div className='flex w-full justify-between'>

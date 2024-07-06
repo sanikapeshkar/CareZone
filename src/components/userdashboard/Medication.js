@@ -30,7 +30,7 @@ const Medication = () => {
                         <a target='blank' className='text-[#525252] px-4 p-1 border-2 border-[#525252] rounded-[20px] hover:bg-[#525252] hover:text-white duration-200 text-center' href='https://www.wellnessforever.com/'>Wellness</a>
                     </div>
                 </div>
-                <div className='grid grid-cols-2 gap-4 w-full mt-32 hiddenx'>
+                <div className='grid grid-cols-2 gap-4 w-[96%] mt-32 hiddenx'>
                     {MedicineData.map((val, index) => (
                         <div id='medbackground' key={index} className='mt-1 p-3 px-4 rounded-[24px] yflow'>
                             <div className='flex justify-between items-center pr-8'>

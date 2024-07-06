@@ -41,12 +41,18 @@
   }
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 h1, h2,h3, h4, h5, h6, label, input, p, a, button, ::placeholder{
   color: #1F2421;
   font-family: Poppins;
 }
 
-
+html, body {
+  overflow-x: hidden;
+}
 
 input {
   font-size: 20px;

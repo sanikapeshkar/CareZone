@@ -38,7 +38,7 @@ const AttendEvent = () => {
             <div className='w-4/5 p-4 ml-auto h-screen'>
                 <h1 className='text-4xl font-semibold text-[#8883f0] mt-3'>Attend Event</h1>
                 <div className='rounded-[24px] p-2 mt-4 shadowboxer flex w-[100%] h-[90%]'>
-                    <div className='w-[30%] bg-gray-300 rounded-[16px] overflow-scroll'>
+                    <div className='w-[30%] bg-gray-300 rounded-[16px] overflow-scroll overflow-x-hidden'>
                         {EventData.map((val, key) => (
                             <div
                                 key={key}
