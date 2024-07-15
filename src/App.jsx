@@ -4,18 +4,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Homepage from './components/Homepage';
 import Registration from './components/Registration';
 import UserRegistration from './components/UserRegistration';
-import CTRegistration from './components/CTRegistration';
-
+import CTRegistration from './pages/CTRegistration';
 import UserDashboard from './components/UserDashboard';
 import AttendEvent from './components/userdashboard/AttendEvent';
 import CreateEvent from './components/userdashboard/CreateEvent';
 import Medication from './components/userdashboard/Medication';
 import MyRequests from './components/userdashboard/MyRequests';
 import HireCT from './components/userdashboard/HireCT';
-import BasicDatePicker from './components/BasicDatePicker';
 import BasicTimePicker from './components/BasicTimePicker';
 import UserProfile from './components/userdashboard/UserProfile';
-
 import CTProfile from './components/CTDashboard/CTProfile';
 import CTRequests from './components/CTDashboard/CTRequests';
 import CTDashboard from './components/CTDashboard/CTDashboard';
