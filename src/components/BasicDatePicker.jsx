@@ -4,7 +4,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TextField } from '@mui/material';
 
-function BasicDatePicker() {
+function BasicDatePicker({onChange}) {
     const [selectedDate, setSelectedDate] = useState(null);
 
     return (
@@ -12,7 +12,7 @@ function BasicDatePicker() {
             <DatePicker
                 label="Select Date"
                 value={selectedDate}
-                onChange={(newValue) => setSelectedDate(newValue)}
+                onChange={(newValue) => {setSelectedDate(newValue);onChange(selectedDate)}}
                 renderInput={(params) => <TextField {...params} />}
             />
         </LocalizationProvider>

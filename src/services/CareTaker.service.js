@@ -9,7 +9,7 @@ const careTakerService = {
         `/user/careTaker/register`,
         data
       );
-      return response.data;
+      return response.data.data;
     } catch (error) {
       console.error("Error registering caretaker:", error);
       throw error;

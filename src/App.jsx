@@ -5,7 +5,7 @@ import Homepage from './components/Homepage';
 import Registration from './components/Registration';
 import UserRegistration from './components/UserRegistration';
 import CTRegistration from './pages/CTRegistration';
-import UserDashboard from './components/UserDashboard';
+import UserDashboard from './pages/UserDashboard';
 import AttendEvent from './components/userdashboard/AttendEvent';
 import CreateEvent from './components/userdashboard/CreateEvent';
 import Medication from './components/userdashboard/Medication';

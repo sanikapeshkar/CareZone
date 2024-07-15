@@ -2,11 +2,15 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const CTRegistration = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  // onSubmit form 
+  // onSubmit form
   function handleCitizenRegister(data) {
-    console.log('on Register submit', data);
+    console.log("on Register submit", data);
   }
 
   return (
@@ -28,37 +32,43 @@ const CTRegistration = () => {
                 {...register("location", { required: "Location is required" })}
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
               ></input>
-              {errors.location && <span className="text-red-500">{errors.location.message}</span>}
+              {errors.location && (
+                <span className="text-red-500">{errors.location.message}</span>
+              )}
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Mobile Number</label>
               <input
                 type="number"
-                {...register("phoneNo", { 
+                {...register("phoneNo", {
                   required: "Mobile number is required",
                   pattern: {
                     value: /^[0-9]{10}$/,
-                    message: "Invalid mobile number"
-                  }
+                    message: "Invalid mobile number",
+                  },
                 })}
                 placeholder="+91"
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
               ></input>
-              {errors.phoneNo && <span className="text-red-500">{errors.phoneNo.message}</span>}
+              {errors.phoneNo && (
+                <span className="text-red-500">{errors.phoneNo.message}</span>
+              )}
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Age</label>
               <input
                 type="number"
-                {...register("age", { 
+                {...register("age", {
                   required: "Age is required",
                   min: { value: 18, message: "Minimum age is 18" },
-                  max: { value: 50, message: "Maximum age is 50" }
+                  max: { value: 50, message: "Maximum age is 50" },
                 })}
                 placeholder="(18-50 years)"
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
               ></input>
-              {errors.age && <span className="text-red-500">{errors.age.message}</span>}
+              {errors.age && (
+                <span className="text-red-500">{errors.age.message}</span>
+              )}
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Gender</label>
@@ -71,32 +81,50 @@ const CTRegistration = () => {
                 <option value="female">Female</option>
                 <option value="others">Others</option>
               </select>
-              {errors.gender && <span className="text-red-500">{errors.gender.message}</span>}
+              {errors.gender && (
+                <span className="text-red-500">{errors.gender.message}</span>
+              )}
             </div>
-            <div className="my-2 w-full grid grid-cols-2 items-center">
+            {/* <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Aadhar Card Image</label>
               <button className="rounded-xl p-2 px-4 bg-[#8883f0] text-white">
                 Upload Image
               </button>
-            </div>
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+              />
+            </div> */}
             <div className="my-3 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Work Experience</label>
               <input
                 type="number"
                 placeholder="in years"
-                {...register("experience", { required: "Experience is required" })}
+                {...register("experience", {
+                  required: "Experience is required",
+                })}
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
               ></input>
-              {errors.experience && <span className="text-red-500">{errors.experience.message}</span>}
+              {errors.experience && (
+                <span className="text-red-500">
+                  {errors.experience.message}
+                </span>
+              )}
             </div>
             <div className="my-3 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Services Provided</label>
               <input
                 placeholder="comma separated"
-                {...register("services", { required: "Services provided is required" })}
+                {...register("services", {
+                  required: "Services provided is required",
+                })}
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
               ></input>
-              {errors.services && <span className="text-red-500">{errors.services.message}</span>}
+              {errors.services && (
+                <span className="text-red-500">{errors.services.message}</span>
+              )}
             </div>
           </div>
           <button
