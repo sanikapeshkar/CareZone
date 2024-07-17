@@ -1,27 +1,21 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import Sidebar from "../Sidebar";
 import BasicDatePicker from "../BasicDatePicker";
 import BasicTimePicker from "../BasicTimePicker";
 import { postEvent } from "../../services/eventData.service";
-import dayjs from "dayjs";
 
 const CreateEvent = () => {
-  const { register, handleSubmit, setValue, watch } = useForm();
+  const { register, handleSubmit, setValue, control } = useForm();
 
   const onSubmit = async (data) => {
-    const date = new Date(data.eventDate);
-    const time = new Date(data.eventTime);
-
-    const dateTime = data.eventDate;
-
     const eventData = {
       title: data.title,
       description: data.description,
       location: data.location,
-      dateTime,
+      dateTime: data.eventDate,
       duration: Number(data.duration),
-      lastDateToEnrol: data.lastDateToEnrol,
+      lastDateToEnrol: data.lastDateToEnroll,
       cost: Number(data.cost),
     };
 
@@ -34,16 +28,9 @@ const CreateEvent = () => {
     }
   };
 
-  const handleDateChange = (date) => {
-    setValue("dateTime", date);
-  };
-
-  const handleTimeChange = (time) => {
-    setValue("eventTime", time);
-  };
-
   const handleLastEnrollmentDateChange = (date) => {
-    setValue("lastEnrollmentDate", date);
+    console.log('lastEnrollmentDate', date);
+    setValue("lastDateToEnroll", date);
   };
 
   return (
@@ -84,12 +71,20 @@ const CreateEvent = () => {
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl text-[#1a1a1a]">Event Date</label>
-              <BasicDatePicker onChange={handleDateChange} />
-              <input type="hidden" {...register("eventDate")} />
+              <Controller
+                name="eventDate"
+                control={control}
+                render={({ field }) => (
+                  <BasicDatePicker
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl text-[#1a1a1a]">Event Time</label>
-              <BasicTimePicker onChange={handleTimeChange} />
+              <BasicTimePicker onChange={(time) => setValue("eventTime", time)} />
               <input type="hidden" {...register("eventTime")} />
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
@@ -102,11 +97,20 @@ const CreateEvent = () => {
               />
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
-              <label className="text-xl text-[#1a1a1a]">
-                Last Date to Enroll
-              </label>
-              <BasicDatePicker onChange={handleLastEnrollmentDateChange} />
-              <input type="hidden" {...register("lastDateToEnroll")} />
+              <label className="text-xl text-[#1a1a1a]">Last Date to Enroll</label>
+              <Controller
+                name="lastDateToEnroll"
+                control={control}
+                render={({ field }) => (
+                  <BasicDatePicker
+                    value={field.value}
+                    onChange={(newDate) => {
+                      field.onChange(newDate);
+                      handleLastEnrollmentDateChange(newDate);
+                    }}
+                  />
+                )}
+              />
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl text-[#1a1a1a]">Cost</label>

@@ -1,4 +1,4 @@
-import { axiosInstance } from "./axios.instance";
+import { axiosInstance } from "./axiosInstance.js";
 
 // Function to get event data
 export async function getEventData() {
@@ -13,6 +13,15 @@ export async function getEventData() {
 
 // Function to post a new event
 export async function postEvent(event) {
+  const createEvent = {
+    cost: event.cost,
+    dateTime: "",
+    description: "asfsetret",
+    duration: 3,
+    lastDateToEnrol: undefined,
+    location: "wrwrfewt",
+    title: event.title,
+  };
   try {
     console.log("Create event data received", event);
     const response = await axiosInstance.post("/api/event", event);

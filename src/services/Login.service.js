@@ -1,5 +1,5 @@
 import { CredentialResponse } from "@react-oauth/google";
-import axiosInstance from "./axiosInstance"
+import {axiosInstance} from "./axiosInstance.js"
 
 export const loginUser = async (credential) => {
   try {
@@ -8,10 +8,12 @@ export const loginUser = async (credential) => {
         authorization: `${credential.credential}`
       },
     });
+
+    console.log('Login Response',data);
     const token = data.data.token;
     const role = data.data.role
     if (token && role) {
-      localStorage.setItem("token", 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NzViNGQ1MzE5YTViZTI1OWEwMWQxZSIsImVtYWlsIjoiYW1pdC50dXJhcmVAY29kaXRhcy5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcxOTE2NDAzOX0.xs7-y3rfoviwtxHjYqC2IVnXBMyECq_xzMxlZeZGG3w');
+      localStorage.setItem("token", token);
 
     }
     return {

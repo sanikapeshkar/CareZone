@@ -1,9 +1,9 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Homepage from './components/Homepage';
+import Homepage from './pages/Homepage';
 import Registration from './components/Registration';
-import UserRegistration from './components/UserRegistration';
+import UserRegistration from './pages/UserRegistration';
 import CTRegistration from './pages/CTRegistration';
 import UserDashboard from './pages/UserDashboard';
 import AttendEvent from './components/userdashboard/AttendEvent';
