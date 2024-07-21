@@ -1,20 +1,7 @@
 import React, { useState } from 'react';
 
-const ImageUploader = () => {
-    const [selectedImage, setSelectedImage] = useState(null);
-    
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const imageUrl = URL.createObjectURL(file);
-            setSelectedImage(imageUrl);
-        }
-    };
-
-    const handleRemoveImage = () => {
-        setSelectedImage(null);
-    };
-
+const ImageUploader = ({selectedImage,handleImageChange,handleRemoveImage}) => {
+ 
     return (
         <div className="image-uploader">
             <input 

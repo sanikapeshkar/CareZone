@@ -1,5 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import ImageUploader from "../components/ImageUploader";
+import careTakerService from "../services/CareTaker.service";
+import { useNavigate } from "react-router-dom";
+
+const { registerCareTaker } = careTakerService;
 
 const CTRegistration = () => {
   const {
@@ -7,11 +12,41 @@ const CTRegistration = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [selectedImage, setSelectedImage] = useState(null);
+  const navigate=useNavigate();
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+      console.log("Image uploaded: ", file);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setSelectedImage(null);
+  };
 
   // onSubmit form
   function handleCitizenRegister(data) {
-    console.log("on Register submit", data);
+    const formData = new FormData();
+    formData.append("location", data.location);
+    formData.append("phoneNo", data.phoneNo);
+    formData.append("age", data.age);
+    formData.append("gender", data.gender);
+    formData.append("experience", data.experience);
+    formData.append("services", data.services.split(",").map(service => service.trim()));
+    if (selectedImage) {
+      formData.append("aadharCardImageUrl", selectedImage);
+    }
+
+    console.log("on Register submit", formData); 
+    const response=registerCareTaker(formData);
+
+    if(response){
+      navigate(`/ctdashboard`);
+    }
   }
+
 
   return (
     <div className="w-screeen p-8">
@@ -85,18 +120,14 @@ const CTRegistration = () => {
                 <span className="text-red-500">{errors.gender.message}</span>
               )}
             </div>
-            {/* <div className="my-2 w-full grid grid-cols-2 items-center">
+            <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Aadhar Card Image</label>
-              <button className="rounded-xl p-2 px-4 bg-[#8883f0] text-white">
-                Upload Image
-              </button>
-              <input
-                type="file"
-                ref={fileInputRef}
-                style={{ display: "none" }}
-                onChange={handleFileChange}
+              <ImageUploader
+                selectedImage={selectedImage}
+                handleImageChange={handleImageChange}
+                handleRemoveImage={handleRemoveImage}
               />
-            </div> */}
+            </div>
             <div className="my-3 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Work Experience</label>
               <input

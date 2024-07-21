@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an axios instance
 export const axiosInstance = axios.create({
-  baseURL: 'https://5071-115-160-223-174.ngrok-free.app/', 
+  baseURL: ' https://281e-2405-201-1006-914d-e094-b982-ed88-7a82.ngrok-free.app/', 
   headers: {
     'Content-Type': 'application/json',
     "ngrok-skip-browser-warning": "skip-browser-warning",

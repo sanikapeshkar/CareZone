@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import plusphoto from "../components/media/plus.png";
-import pluswhitephoto from "../components/media/plus-hover.png";
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import ImageUploader from "../components/ImageUploader";
 import { updateElderlyUserRegistration } from "../services/user.service";
+import plusphoto from "../components/media/plus.png";
+import pluswhitephoto from "../components/media/plus-hover.png";
 
 const UserRegistration = () => {
   const {
@@ -40,10 +40,48 @@ const UserRegistration = () => {
     name: "medication",
   });
 
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+      console.log("Image uploaded: ", file);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setSelectedImage(null);
+  };
+
   const onSubmit = (data) => {
-    console.log(data);
-    const response=updateElderlyUserRegistration(data);
-    
+    const userRegisterData = new FormData();
+
+    // Append form data to FormData instance
+    userRegisterData.append("location", data.location);
+    userRegisterData.append("mobileNumber", data.mobileNumber);
+    userRegisterData.append("age", data.age);
+    userRegisterData.append("gender", data.gender);
+
+    data.medicalHistory.forEach((item, index) => {
+      userRegisterData.append(`medicalHistory[${index}][condition]`, item.condition);
+      userRegisterData.append(`medicalHistory[${index}][diagnosisDate]`, item.diagnosisDate);
+      userRegisterData.append(`medicalHistory[${index}][treatment]`,  item.treatment.split(",").map(treatment => treatment.trim()));
+    });
+
+    data.medication.forEach((item, index) => {
+      userRegisterData.append(`medication[${index}][name]`, item.name);
+      userRegisterData.append(`medication[${index}][dosage]`, item.dosage);
+      userRegisterData.append(`medication[${index}][frequency]`, item.frequency);
+    });
+
+    if (selectedImage) {
+      userRegisterData.append("aadharCardImage", selectedImage);
+    }
+
+    console.log(...userRegisterData); // For debugging purposes
+    const response = updateElderlyUserRegistration(userRegisterData);
+    console.log(response); // For debugging purposes
   };
 
   return (
@@ -76,7 +114,6 @@ const UserRegistration = () => {
                 placeholder="+91"
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
                 {...register("mobileNumber", {
-                  valueAsNumber: true,
                   required: "Mobile number is required",
                   pattern: {
                     value: /^\+91\d{10}$/,
@@ -96,15 +133,8 @@ const UserRegistration = () => {
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
                 {...register("age", {
                   required: "Age is required",
-                  min: {
-                    value: 18,
-                    message: "Minimum age is 18",
-                  },
-                  valueAsNumber: true,
-                  max: {
-                    value: 50,
-                    message: "Maximum age is 50",
-                  },
+                  min: { value: 18, message: "Minimum age is 18" },
+                  max: { value: 50, message: "Maximum age is 50" },
                 })}
               />
               {errors.age && (
@@ -128,11 +158,17 @@ const UserRegistration = () => {
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Aadhar Card Image</label>
-
               <Controller
                 name="aadharCardImage"
                 control={control}
-                render={({ field }) => <ImageUploader {...field} />}
+                render={({ field }) => (
+                  <ImageUploader
+                    {...field}
+                    selectedImage={selectedImage}
+                    handleImageChange={handleImageChange}
+                    handleRemoveImage={handleRemoveImage}
+                  />
+                )}
               />
             </div>
           </div>
@@ -187,7 +223,6 @@ const UserRegistration = () => {
                       className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
                       {...register(`medicalHistory.${idx}.diagnosisDate`, {
                         required: "Diagnosis date is required",
-                        valueAsDate: true,
                       })}
                     />
                     {errors?.medicalHistory?.[idx]?.diagnosisDate && (
