@@ -7,19 +7,25 @@ import { ElderlyContext } from "../components/userdashboard/UserContext";
 const Dashboard = () => {
   const { state, getProfileData } = useContext(ElderlyContext);
   const [loading, setLoading] = useState(true);
-
+  console.log(state);
   useEffect(() => {
     getProfileData().finally(() => setLoading(false));
   }, []);
 
   if (loading) {
-    return <div className="w-screen h-screen flex justify-center items-center">Loading...</div>;
+    return (
+      <div className="w-screen h-screen flex justify-center items-center">
+        Loading...
+      </div>
+    );
   }
 
   return (
     <div className="w-screen flex">
       <div className="w-full md:w-4/5 p-4 ml-auto">
-        <h1 className="text-4xl font-semibold text-[#8883f0] mt-3">Dashboard</h1>
+        <h1 className="text-4xl font-semibold text-[#8883f0] mt-3">
+          Dashboard
+        </h1>
         <div className="w-full p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col p-4 rounded-lg">
             <h1 className="bg-[#8883f0] text-white font-semibold text-center text-2xl mb-2 p-2 rounded-lg">
@@ -32,7 +38,11 @@ const Dashboard = () => {
                     key={key}
                     className="flex items-center p-2 bg-white rounded-lg my-2"
                   >
-                    <img className="h-12 w-12 rounded-full mr-2" src={val.pictureUrl} alt={val.firstName} />
+                    <img
+                      className="h-12 w-12 rounded-full mr-2"
+                      src={val.pictureUrl}
+                      alt={val.firstName}
+                    />
                     <h1 className="text-xl">
                       {val.firstName} {val.lastName}
                     </h1>
@@ -65,7 +75,6 @@ const Dashboard = () => {
                     {state.profileData.attendingEvents[0].dateTime}
                     {state.profileData.attendingEvents[0].location}
                   </h1>
-                
                 </>
               ) : (
                 <p>No upcoming events</p>

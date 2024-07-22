@@ -46,6 +46,7 @@ const ElderlyActions = (dispatch) => {
   //hire CareTaker
 
    function hireCareTaker(data, ctId) {
+
     const response =  HireCT(data, ctId);
     console.log("response from HireCT", response);
   }

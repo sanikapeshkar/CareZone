@@ -1,42 +1,40 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import BasicDatePicker from "../BasicDatePicker";
 import cross from "./../media/cross.png";
 import { ElderlyContext } from "./UserContext";
 
-const HireMePopup = ({ onClose, CTid }) => {
+const HireMePopup = ({ onClose, careTakerId }) => {
+console.log(careTakerId)
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,control
   } = useForm();
   const popupRef = useRef();
-  const [selectedDate, setSelectedDate] = useState();
-  const { state, hireCareTaker } = useContext(ElderlyContext);
-  const handleClickOutside = (event) => {
-    if (popupRef.current && !popupRef.current.contains(event.target)) {
-      onClose();
-    }
-  };
+  const { hireCareTaker } = useContext(ElderlyContext);
 
-  function onChange(date) {
-    setSelectedDate(date);
+  function handleDateChange(date) {
+    console.log(date,'dateTime');
+    setValue("dateTime", date);
   }
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  const formatDate = (date) => {
+    if (!date) return "";
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
 
   const onSubmit = (data) => {
     const HireCTData = {
-      dateTime: selectedDate | "",
+      dateTime: formatDate(data.dateTime),
       description: data.description,
     };
     console.log("Hire me Form data:", HireCTData);
-    hireCareTaker(HireCTData, CTid);
+    hireCareTaker(HireCTData, careTakerId);
     onClose();
   };
 
@@ -59,7 +57,19 @@ const HireMePopup = ({ onClose, CTid }) => {
           <div className="flex justify-between items-center w-full">
             <h1 className="text-xl w-1/2">Date</h1>
             <div className="scale-75 ml-auto">
-              <BasicDatePicker onChange={onChange} />
+              <Controller
+                name="dateTime"
+                control={control}
+                render={({ field }) => (
+                  <BasicDatePicker
+                    value={field.value}
+                    onChange={(newDate) => {
+                      field.onChange(newDate);
+                      handleDateChange(newDate);
+                    }}
+                  />
+                )}
+              />
             </div>
             {errors.date && (
               <span className="text-red-500">{errors.date.message}</span>
