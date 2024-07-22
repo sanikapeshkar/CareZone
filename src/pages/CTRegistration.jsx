@@ -1,5 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import ImageUploader from "../components/ImageUploader";
+import careTakerService from "../services/CareTaker.service";
+import { useNavigate } from "react-router-dom";
+
+const { registerCareTaker } = careTakerService;
 
 const CTRegistration = () => {
   const {
@@ -7,10 +12,43 @@ const CTRegistration = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [selectedImage, setSelectedImage] = useState(null);
+  const navigate = useNavigate();
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+      console.log("Image uploaded: ", file);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setSelectedImage(null);
+  };
 
   // onSubmit form
   function handleCitizenRegister(data) {
-    console.log("on Register submit", data);
+    const formData = new FormData();
+    formData.append("location", data.location);
+    formData.append("phoneNumber", data.phoneNumber);
+    formData.append("age", data.age);
+    formData.append("gender", data.gender);
+    formData.append("workExperience", data.workExperience);
+    formData.append("ratePerMonth", data.ratePerMonth);
+    formData.append(
+      "servicesOffered",
+      data.servicesOffered.split(",").map((service) => service.trim())
+    );
+    if (selectedImage) {
+      formData.append("aadharCardImageUrl", selectedImage);
+    }
+
+    console.log("on Register submit", formData);
+    const response = registerCareTaker(formData);
+
+    if (response) {
+      navigate(`/caretaker/ctdashboard`);
+    }
   }
 
   return (
@@ -40,7 +78,7 @@ const CTRegistration = () => {
               <label className="text-xl">Mobile Number</label>
               <input
                 type="number"
-                {...register("phoneNo", {
+                {...register("phoneNumber", {
                   required: "Mobile number is required",
                   pattern: {
                     value: /^[0-9]{10}$/,
@@ -50,8 +88,10 @@ const CTRegistration = () => {
                 placeholder="+91"
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
               ></input>
-              {errors.phoneNo && (
-                <span className="text-red-500">{errors.phoneNo.message}</span>
+              {errors.phoneNumber && (
+                <span className="text-red-500">
+                  {errors.phoneNumber.message}
+                </span>
               )}
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
@@ -85,31 +125,43 @@ const CTRegistration = () => {
                 <span className="text-red-500">{errors.gender.message}</span>
               )}
             </div>
-            {/* <div className="my-2 w-full grid grid-cols-2 items-center">
+            <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Aadhar Card Image</label>
-              <button className="rounded-xl p-2 px-4 bg-[#8883f0] text-white">
-                Upload Image
-              </button>
-              <input
-                type="file"
-                ref={fileInputRef}
-                style={{ display: "none" }}
-                onChange={handleFileChange}
+              <ImageUploader
+                selectedImage={selectedImage}
+                handleImageChange={handleImageChange}
+                handleRemoveImage={handleRemoveImage}
               />
-            </div> */}
+            </div>
             <div className="my-3 w-full grid grid-cols-2 items-center">
               <label className="text-xl">Work Experience</label>
               <input
                 type="number"
                 placeholder="in years"
-                {...register("experience", {
+                {...register("workExperience", {
                   required: "Experience is required",
                 })}
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
               ></input>
-              {errors.experience && (
+              {errors.workExperience && (
                 <span className="text-red-500">
-                  {errors.experience.message}
+                  {errors.workExperience.message}
+                </span>
+              )}
+            </div>
+            <div className="my-3 w-full grid grid-cols-2 items-center">
+              <label className="text-xl">Cost</label>
+              <input
+                type="number"
+                placeholder="in rupees per month"
+                {...register("ratePerMonth", {
+                  required: "ratePerMonth is required",
+                })}
+                className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
+              ></input>
+              {errors.ratePerMonth && (
+                <span className="text-red-500">
+                  {errors.ratePerMonth.message}
                 </span>
               )}
             </div>
@@ -117,13 +169,15 @@ const CTRegistration = () => {
               <label className="text-xl">Services Provided</label>
               <input
                 placeholder="comma separated"
-                {...register("services", {
+                {...register("servicesOffered", {
                   required: "Services provided is required",
                 })}
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
               ></input>
-              {errors.services && (
-                <span className="text-red-500">{errors.services.message}</span>
+              {errors.servicesOffered && (
+                <span className="text-red-500">
+                  {errors.servicesOffered.message}
+                </span>
               )}
             </div>
           </div>

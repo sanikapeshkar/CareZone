@@ -7,22 +7,22 @@ export const SidebarData = [
     },
     {
         title: 'Hire Caretaker',
-        link: '/hirect',
+        link: '/userdashboard/hirect',
     },
     {
         title: 'Attend Event',
-        link: '/attendevent',
+        link: '/userdashboard/attendevent',
     },
     {
         title: 'Create Event',
-        link: '/createevent',
+        link: '/userdashboard/createevent',
     },
     {
         title: 'Medication',
-        link: '/medication',
+        link: '/userdashboard/medication',
     },
     {
         title: 'My Requests',
-        link: '/myrequests',
+        link: '/userdashboard/myrequests',
     },
 ]

@@ -1,15 +1,27 @@
-import React from "react";
-import Sidebar from "../components/Sidebar";
+import React, { useContext, useEffect, useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import CTData from "../components/userdashboard/CTData";
-import EventData from "../components/userdashboard/EventData";
+import { ElderlyContext } from "../components/userdashboard/UserContext";
 
 const Dashboard = () => {
+  const { state, getProfileData } = useContext(ElderlyContext);
+  const [loading, setLoading] = useState(true);
+  console.log(state);
+  useEffect(() => {
+    getProfileData().finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="w-screen h-screen flex justify-center items-center">
+        Loading...
+      </div>
+    );
+  }
+
   return (
     <div className="w-screen flex">
-      <Sidebar />
       <div className="w-full md:w-4/5 p-4 ml-auto">
         <h1 className="text-4xl font-semibold text-[#8883f0] mt-3">
           Dashboard
@@ -20,19 +32,25 @@ const Dashboard = () => {
               Hired Caretakers
             </h1>
             <div className="p-4 py-2 bg-slate-200 rounded-lg">
-              {CTData.slice(0, 3).map((val, key) => (
-                <div
-                  key={key}
-                  className="flex items-center p-2 bg-white rounded-lg my-2"
-                >
-                  <img
-                    className="h-12 w-12 rounded-full mr-2"
-                    src={val.cticon}
-                    alt={val.ctname}
-                  />
-                  <h1 className="text-xl">{val.ctname}</h1>
-                </div>
-              ))}
+              {state.profileData?.appointments?.length ? (
+                state.profileData.appointments.map((val, key) => (
+                  <div
+                    key={key}
+                    className="flex items-center p-2 bg-white rounded-lg my-2"
+                  >
+                    <img
+                      className="h-12 w-12 rounded-full mr-2"
+                      src={val.pictureUrl}
+                      alt={val.firstName}
+                    />
+                    <h1 className="text-xl">
+                      {val.firstName} {val.lastName}
+                    </h1>
+                  </div>
+                ))
+              ) : (
+                <p>No hired caretakers</p>
+              )}
             </div>
           </div>
           <div className="flex flex-col p-4">
@@ -50,15 +68,17 @@ const Dashboard = () => {
               Upcoming Event
             </h1>
             <div className="bg-slate-200 p-4 py-2 rounded-lg">
-              <h1 className="text-center p-2 my-2 bg-white text-xl rounded-lg">
-                {EventData[0].eventname}
-              </h1>
-              <h1 className="text-center p-2 my-2 bg-white text-xl rounded-lg">
-                {EventData[0].eventdate}
-              </h1>
-              <h1 className="text-center p-2 my-2 bg-white text-xl rounded-lg">
-                {EventData[0].eventlocation}
-              </h1>
+              {state.profileData?.attendingEvents?.length ? (
+                <>
+                  <h1 className="text-center p-2 my-2 bg-white text-xl rounded-lg">
+                    {state.profileData.attendingEvents[0].title}
+                    {state.profileData.attendingEvents[0].dateTime}
+                    {state.profileData.attendingEvents[0].location}
+                  </h1>
+                </>
+              ) : (
+                <p>No upcoming events</p>
+              )}
             </div>
           </div>
         </div>

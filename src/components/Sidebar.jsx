@@ -15,13 +15,13 @@ const Sidebar = () => {
                 )
             })}
             <div className='mb-4 ml-2 mr-auto mt-auto flex items-center'>
-                <Link to="/userprofile">
+                <Link to="/userdashboard/userprofile">
                     <div className='rounded-full h-24 w-24 mr-4'>
                         <img className='w-full' src={usericon}></img>
                     </div>
                 </Link>
                 <div className='flex flex-col h-24'>
-                    <Link to="/userprofile">
+                    <Link to="/userdashboard/userprofile">
                         <h3 className='my-2 text-xl'>username</h3>
                     </Link>
                     <Link to="/">

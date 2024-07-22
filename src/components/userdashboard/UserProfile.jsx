@@ -1,25 +1,34 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Sidebar from '../Sidebar';
 import usericon from './../media/ctpfp.png';
-import CTData from './CTData';
 import editicon from './../media/editicon.png';
 import deleteicon from './../media/deleteicon.png';
-import EventData from './EventData';
-import UserData from './UserData';
 import EditEventPopup from './EditEventPopup';
 import EditProfilePopup from './EditProfilePopup';
+import { ElderlyContext } from './UserContext';
 
 const UserProfile = () => {
     const [activeComponent, setActiveComponent] = useState('HiredCaretakers');
     const [isEditPopupVisible, setIsEditPopupVisible] = useState(false);
     const [isProfilePopupVisible, setIsProfilePopupVisible] = useState(false);
 
+    const { state, getProfileData } = useContext(ElderlyContext);
+
+    useEffect(() => {
+        getProfileData();
+    }, []);
+
+    const user = state.profileData?.user || {};
+    const hiredCaretakers = state.profileData?.appointments || [];
+    const myEvents = state.profileData?.attendingEvents || [];
+    const medicalHistory = state.profileData?.medicalHistory || [];
+
     const renderActiveComponent = () => {
         switch (activeComponent) {
             case 'HiredCaretakers':
                 return (
                     <div className='px-8 grid grid-cols-3 gap-4 overflow-x-hidden'>
-                        {CTData.map((val, key) => (
+                        {hiredCaretakers.map((val, key) => (
                             <div id='medbackground' key={key} className='p-4 rounded-4 border-0'>
                                 <div className='w-64'>
                                     <div className='flex justify-between'>
@@ -36,10 +45,10 @@ const UserProfile = () => {
             case 'MyEvents':
                 return (
                     <div className='px-8 grid grid-cols-2 gap-2 overflow-x-hidden'>
-                        {EventData.map((val, key) => (
+                        {myEvents.map((val, key) => (
                             <div id='medbackground' key={key} className='p-4 rounded-4 border-0'>
                                 <div className='flex justify-between items-center'>
-                                    <h1 className='text-2xl text-[#8883f0] font-semibold'>{val.eventname}</h1>
+                                    <h1 className='text-2xl text-[#8883f0] font-semibold'>{val.title}</h1>
                                     <div className='flex'>
                                         <img onClick={handleOpenEditPopup} className='h-6 w-6 mr-2 opacity-60' src={editicon} alt='Edit'></img>
                                         <img className='h-6 w-6 opacity-60' src={deleteicon} alt='Delete'></img>
@@ -47,10 +56,10 @@ const UserProfile = () => {
                                 </div>
                                 <div className='flex flex-col pr-8'>
                                     <div className='flex mt-3'>
-                                        <h1 className='text-lg'>{val.eventlocation}</h1>
+                                        <h1 className='text-lg'>{val.location}</h1>
                                     </div>
                                     <div className='flex my-1'>
-                                        <h1 className='text-lg'>{val.eventdate}</h1>
+                                        <h1 className='text-lg'>{val.dateTime}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +69,7 @@ const UserProfile = () => {
             case 'MedicalHistory':
                 return (
                     <div className='px-8 grid grid-cols-2 gap-2 overflow-x-hidden'>
-                        {UserData[0].usermedicalhistory.map((history, key) => (
+                        {medicalHistory.map((history, key) => (
                             <div id='medbackground' key={key} className='p-4 rounded-4 border-0'>
                                 <div className='flex flex-col pr-8'>
                                     <div className='flex my-1'>
@@ -112,8 +121,8 @@ const UserProfile = () => {
                         <img className='w-24 h-24 mr-8' src={usericon} alt='User'></img>
                         <div>
                             <h1 className='text-xl my-1'>Name of User</h1>
-                            <h1 className='my-1'>username</h1>
-                            <h1>Akurdi, Pune</h1>
+                            <h1 className='my-1'>{user.firstName} {user.lastName}</h1>
+                            <h1>{user.location}</h1>
                         </div>
                     </div>
                     <div className='flex flex-col mr-8'>
@@ -145,7 +154,6 @@ const UserProfile = () => {
                 <div className='h-[55%] overflow-y-scroll overflow-x-hidden'>
                     {renderActiveComponent()}
                 </div>
-
             </div>
         </div>
     );

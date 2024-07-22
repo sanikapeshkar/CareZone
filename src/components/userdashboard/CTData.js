@@ -79,3 +79,58 @@ export const CTData = [
 ];
 
 export default CTData;
+
+// {
+//     "data": {
+//         "careTaker": {
+//             "_id": "6675b500319a5be259a01d24",
+//             "firstName": "Suni",
+//             "lastName": "Chopada",
+//             "email": "sunidhichopada18@gmail.com",
+//             "pictureUrl": "https://lh3.googleusercontent.com/a/ACg8ocJzFhpfZ24pqp8tWNmXlw669PAx9P4RexWqOPIudPkunvneqw=s96-c",
+//             "role": "user",
+//             "isDeleted": false,
+//             "createdAt": "2024-06-21T17:14:40.714Z",
+//             "updatedAt": "2024-06-23T17:17:19.667Z",
+//             "__v": 0,
+//             "age": 69,
+//             "gender": "Female",
+//             "location": "Wagholi",
+//             "medicalHistory": [
+//                 {
+//                     "condition": "Hypertension",
+//                     "diagnosisDate": "2015-06-01",
+//                     "treatments": [
+//                         "Medication",
+//                         "Diet Control"
+//                     ]
+//                 },
+//                 {
+//                     "condition": "Diabetes",
+//                     "diagnosisDate": "2018-08-15",
+//                     "treatments": [
+//                         "Insulin"
+//                     ]
+//                 }
+//             ],
+//             "medications": [
+//                 {
+//                     "name": "Metformin",
+//                     "dosage": "500mg",
+//                     "frequency": "Twice a day"
+//                 },
+//                 {
+//                     "name": "Lisinopril",
+//                     "dosage": "10mg",
+//                     "frequency": "Once a day"
+//                 }
+//             ],
+//             "phoneNumber": 1234,
+//             "aadharCardImageUrl": "C:\\Users\\Coditas\\Documents\\CollegeProject\\grammie\\build\\uploads\\1718990532168-two.jpg"
+//         },
+//         "activeAppointments": 0,
+//         "totalAppointments": 1,
+//         "averageRating": 0
+//     },
+//     "err": null
+// }

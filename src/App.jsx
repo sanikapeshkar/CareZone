@@ -1,9 +1,8 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-import Homepage from './components/Homepage';
+import Homepage from './pages/Homepage';
 import Registration from './components/Registration';
-import UserRegistration from './components/UserRegistration';
+import UserRegistration from './pages/UserRegistration';
 import CTRegistration from './pages/CTRegistration';
 import UserDashboard from './pages/UserDashboard';
 import AttendEvent from './components/userdashboard/AttendEvent';
@@ -18,6 +17,8 @@ import CTRequests from './components/CTDashboard/CTRequests';
 import CTDashboard from './components/CTDashboard/CTDashboard';
 import CTCustomers from './components/CTDashboard/CTCustomers';
 import CTReviews from './components/CTDashboard/CTReviews';
+import { CTLayout } from './components/CTDashboard/CTLayout';
+import ElderlyLayout from './components/userdashboard/ElderlyLayout';
 
 function App() {
   const router = createBrowserRouter([
@@ -39,55 +40,67 @@ function App() {
     },
     {
       path: "/userdashboard",
-      element: <UserDashboard />,
+      element: <ElderlyLayout />,
+      children: [
+        {
+          path: "",
+          element: <UserDashboard />,
+        },
+        {
+          path: "attendevent",
+          element: <AttendEvent />,
+        },
+        {
+          path: "createevent",
+          element: <CreateEvent />,
+        },
+        {
+          path: "medication",
+          element: <Medication />,
+        },
+        {
+          path: "myrequests",
+          element: <MyRequests />,
+        },
+        {
+          path: "hirect",
+          element: <HireCT />,
+        },
+        {
+          path: "userprofile",
+          element: <UserProfile />,
+        },
+        {
+          path: "timepicker",
+          element: <BasicTimePicker />,
+        },
+      ],
     },
     {
-      path: "/attendevent",
-      element: <AttendEvent />,
-    },
-    {
-      path: "/createevent",
-      element: <CreateEvent />,
-    },
-    {
-      path: "/hirect",
-      element: <HireCT />,
-    },
-    {
-      path: "/medication",
-      element: <Medication />,
-    },
-    {
-      path: "/myrequests",
-      element: <MyRequests />,
-    },
-    {
-      path: "/userprofile",
-      element: <UserProfile />,
-    },
-    {
-      path: "/timepicker",
-      element: <BasicTimePicker />,
-    },
-    {
-      path: "/ctprofile",
-      element: <CTProfile />,
-    },
-    {
-      path: "/ctrequests",
-      element: <CTRequests />,
-    },
-    {
-      path: "/ctdashboard",
-      element: <CTDashboard />,
-    },
-    {
-      path: "/ctcustomers",
-      element: <CTCustomers />,
-    },
-    {
-      path: "/ctreviews",
-      element: <CTReviews />,
+      path: "/caretaker",
+      element: <CTLayout />,
+      children: [
+        {
+          path: "ctdashboard",
+          element: <CTDashboard />,
+        },
+        {
+          path: "ctprofile",
+          element: <CTProfile />,
+        },
+        {
+          path: "ctcustomers",
+          element: <CTCustomers />,
+        },
+        {
+          path: "ctreviews",
+          element: <CTReviews />,
+        },
+        {
+          path: "ctrequests",
+          element: <CTRequests />,
+        },
+      ],
     },
   ]);
 
