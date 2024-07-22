@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import BasicDatePicker from "../BasicDatePicker";
-import BasicTimePicker from "../BasicTimePicker";
 import cross from "./../media/cross.png";
 import { ElderlyContext } from "./UserContext";
 
@@ -32,17 +31,17 @@ const HireMePopup = ({ onClose, CTid }) => {
   }, []);
 
   const onSubmit = (data) => {
-    console.log("Hire me Form data:", data);
     const HireCTData = {
-      dateTime: selectedDate,
+      dateTime: selectedDate | "",
       description: data.description,
     };
-    hireCareTaker(HireCTData,CTid);
+    console.log("Hire me Form data:", HireCTData);
+    hireCareTaker(HireCTData, CTid);
     onClose();
   };
 
   return (
-    <div className="w-screen h-screen fixed flex justify-center items-center bg-gray-50/50">
+    <div className="top-0 left-0 w-screen h-screen fixed flex justify-center items-center bg-gray-50/50">
       <div
         ref={popupRef}
         className="bg-white p-4 border-2 border-[#d3d9dd] rounded-2xl flex flex-col w-[400px]"

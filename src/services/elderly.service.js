@@ -2,11 +2,10 @@
 
 import { axiosInstance } from "./axiosInstance";
 
-
-export async function registerElderly(data){
+export async function registerElderly(data) {
   try {
     const response = await axiosInstance.patch(
-      `/api/user/careTaker/register`,
+      `/api/user/elderly/register`,
       data,
       {
         headers: {
@@ -15,14 +14,15 @@ export async function registerElderly(data){
       }
     );
     console.log("Response from register Elderly", response);
+
+    return response.data.data;
   } catch (error) {
     console.error("Error registering Elderly:", error);
     throw error;
   }
 }
 
-
-//to get elderly dashboard data 
+//to get elderly dashboard data
 export async function getElderlyProfileData() {
   try {
     const response = await axiosInstance.get("/api/user/elderly/dashboard");
@@ -34,7 +34,7 @@ export async function getElderlyProfileData() {
   }
 }
 
-//to get all caretaker data for user 
+//to get all caretaker data for user
 export default async function getAllCareTaker() {
   try {
     const response = await axiosInstance.get(`/api/user/careTaker`);
@@ -46,10 +46,9 @@ export default async function getAllCareTaker() {
   }
 }
 
-
-export  async function HireCT(data,ctId){
+export async function HireCT(data, ctId) {
   try {
-    const response = await axiosInstance.post(`/api/appointment/${ctId}`,data);
+    const response = await axiosInstance.post(`/api/appointment/${ctId}`, data);
     console.log("Hire CT  ", response);
     return response.data.data;
   } catch (error) {
@@ -58,13 +57,13 @@ export  async function HireCT(data,ctId){
   }
 }
 
-export async function postAnEvent(data){
+export async function postAnEvent(data) {
   try {
-    const response = await axiosInstance.post(`/api/event`,data);
+    const response = await axiosInstance.post(`/api/event`, data);
     console.log("post event response  ", response);
     return response.data.data;
   } catch (error) {
     console.error("Error:", error);
     throw error;
   }
-} 
+}

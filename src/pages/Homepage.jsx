@@ -21,7 +21,7 @@ const Homepage = () => {
       } else if (!response.role) {
         navigate(`/register`);
       } else if (response.role === "careTaker") {
-        navigate(`/ctdashboard`);
+        navigate(`caretaker/ctdashboard`);
       }
     } catch (e) {
       console.log("Login Failed ");

@@ -22,13 +22,12 @@ const CTDashboard = () => {
     reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
 
   const { state, getDashboardData } = useContext(CTContext);
- 
+
   useEffect(() => {
     getDashboardData();
   }, []);
   return (
     <div className="w-screen">
-
       <div className="w-4/5 ml-auto p-4">
         <h1 className="text-4xl font-semibold text-[#8883f0] mt-3">
           Dashboard

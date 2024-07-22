@@ -8,7 +8,7 @@ export const actionTypes = {
       case actionTypes.SET_DATA:
         return {
           ...state,
-          data: { ...state.data, ...action.payload },
+          data: [  ...action.payload ],
         };
       case actionTypes.SET_PROFILE_DATA:
         return {

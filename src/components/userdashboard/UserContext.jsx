@@ -5,8 +5,8 @@ import getAllCareTaker, { getElderlyDashboardData,getElderlyProfileData,HireCT, 
 export const ElderlyContext = createContext();
 
 const initialState = {
-  data: {},
-  profileData: null,
+  data: [],
+  profileData: [],
 };
 
 export const ElderlyProvider = ({ children }) => {
@@ -28,7 +28,7 @@ export const ElderlyProvider = ({ children }) => {
 const ElderlyActions = (dispatch) => {
   async function getProfileData() {
     const response = await getElderlyProfileData();
-    console.log("response from getElderlyDashboardData", response);
+    console.log("response from getElderlyDashboardData profile", response);
     if (response) {
       dispatch({ type: actionTypes.SET_PROFILE_DATA, payload: response });
     }
@@ -37,7 +37,7 @@ const ElderlyActions = (dispatch) => {
   // get all careTaker data 
   async function getAllCareTakerData() {
     const response = await getAllCareTaker();
-    console.log("response from get all careTaker", response);
+   
     if (response) {
       dispatch({ type: actionTypes.SET_DATA, payload: response });
     }

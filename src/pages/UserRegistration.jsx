@@ -5,8 +5,11 @@ import { updateElderlyUserRegistration } from "../services/user.service";
 import plusphoto from "../components/media/plus.png";
 import pluswhitephoto from "../components/media/plus-hover.png";
 import { registerElderly } from "../services/elderly.service";
+import { useNavigate } from "react-router-dom";
 
 const UserRegistration = () => {
+
+  const navigate=useNavigate();
   const {
     register,
     control,
@@ -93,7 +96,9 @@ const UserRegistration = () => {
 
     console.log(...userRegisterData); // For debugging purposes
     const response = registerElderly(userRegisterData);
-    console.log(response); // For debugging purposes
+    if(response){
+      navigate('/userdashboard')
+    }
   };
 
   return (
