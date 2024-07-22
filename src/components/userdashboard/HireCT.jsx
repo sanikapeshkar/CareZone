@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Sidebar from "../Sidebar";
 import { CTData } from "./CTData";
 import HireMePopup from "./HireMePopup";
 import star from "./../media/star.png";
+import { ElderlyContext } from "./UserContext";
 
 const HireCT = () => {
   const [selectedCaretaker, setSelectedCaretaker] = useState(CTData[0]);
-
+  const {state}=useContext(ElderlyContext);
   const handleCaretakerClick = (caretaker) => {
     setSelectedCaretaker(caretaker);
   };
@@ -23,9 +24,8 @@ const HireCT = () => {
 
   return (
     <div className="w-screen flex">
-      <Sidebar />
-      {isPopupVisible && <HireMePopup onClose={handleClosePopup} />}
-
+      
+ 
       <div className="w-4/5 p-4 ml-auto h-screen">
         <h1 className="text-4xl font-semibold text-[#8883f0] mt-3">
           Hire Caretaker
@@ -70,11 +70,13 @@ const HireCT = () => {
                 </div>
                 <div className="flex flex-col gap-4 mr-4 ml-auto">
                   <button
-                    onClick={handleOpenPopup}
+                    onClick={()=>{ setIsPopupVisible(true);}}
                     className="bg-blue-500 text-white p-2 px-4 rounded"
                   >
                     Hire Me
                   </button>
+                  {isPopupVisible && <HireMePopup onClose={handleClosePopup} careTakerId={selectedCaretaker._id}/>}
+
 
                   <button className="bg-green-500 text-white p-2 px-4 rounded">
                     Call Me

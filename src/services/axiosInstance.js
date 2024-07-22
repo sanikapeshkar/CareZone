@@ -11,7 +11,7 @@ export const axiosInstance = axios.create({
 });
 axiosInstance.interceptors.request.use((request) => {
   if(!request.headers['authorization']) {
-    request.headers['authorization']=`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NzViNGQ1MzE5YTViZTI1OWEwMWQxZSIsImVtYWlsIjoiYW1pdC50dXJhcmVAY29kaXRhcy5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcxOTE2NDAzOX0.xs7-y3rfoviwtxHjYqC2IVnXBMyECq_xzMxlZeZGG3w`;
+    request.headers['authorization']=`Bearer ${localStorage.getItem('token')}`;
   }
   return request;
 });

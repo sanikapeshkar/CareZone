@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import CTData from "../components/userdashboard/CTData";
 import EventData from "../components/userdashboard/EventData";
+import getAllCareTaker from "../services/elderly.service";
+import { ElderlyContext } from "../components/userdashboard/UserContext";
 
 const Dashboard = () => {
+  const [allCareTakerData, setallCareTakerData] = useState();
+
+  const {state,getAllCareTakerData}=useContext(ElderlyContext);
+ 
+  useEffect(() => {getAllCareTakerData();}, []);
   return (
     <div className="w-screen flex">
-      <Sidebar />
+      
       <div className="w-full md:w-4/5 p-4 ml-auto">
         <h1 className="text-4xl font-semibold text-[#8883f0] mt-3">
           Dashboard

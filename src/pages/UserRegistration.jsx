@@ -4,6 +4,7 @@ import ImageUploader from "../components/ImageUploader";
 import { updateElderlyUserRegistration } from "../services/user.service";
 import plusphoto from "../components/media/plus.png";
 import pluswhitephoto from "../components/media/plus-hover.png";
+import { registerElderly } from "../services/elderly.service";
 
 const UserRegistration = () => {
   const {
@@ -14,11 +15,11 @@ const UserRegistration = () => {
   } = useForm({
     defaultValues: {
       location: "",
-      mobileNumber: "",
+      phoneNumber: "",
       age: "",
       gender: "",
-      medicalHistory: [{ condition: "", diagnosisDate: "", treatment: "" }],
-      medication: [{ name: "", dosage: "", frequency: "" }],
+      medicalHistory: [{ condition: "", diagnosisDate: "", treatments: "" }],
+      medications: [{ name: "", dosage: "", frequency: "" }],
     },
   });
 
@@ -37,7 +38,7 @@ const UserRegistration = () => {
     remove: removeMedication,
   } = useFieldArray({
     control,
-    name: "medication",
+    name: "medications",
   });
 
   const [selectedImage, setSelectedImage] = useState(null);
@@ -59,28 +60,39 @@ const UserRegistration = () => {
 
     // Append form data to FormData instance
     userRegisterData.append("location", data.location);
-    userRegisterData.append("mobileNumber", data.mobileNumber);
+    userRegisterData.append("phoneNumber", data.phoneNumber);
     userRegisterData.append("age", data.age);
     userRegisterData.append("gender", data.gender);
 
     data.medicalHistory.forEach((item, index) => {
-      userRegisterData.append(`medicalHistory[${index}][condition]`, item.condition);
-      userRegisterData.append(`medicalHistory[${index}][diagnosisDate]`, item.diagnosisDate);
-      userRegisterData.append(`medicalHistory[${index}][treatment]`,  item.treatment.split(",").map(treatment => treatment.trim()));
+      userRegisterData.append(
+        `medicalHistory[${index}][condition]`,
+        item.condition
+      );
+      userRegisterData.append(
+        `medicalHistory[${index}][diagnosisDate]`,
+        item.diagnosisDate
+      );
+      item.treatments.split(",").forEach((treatments, tIndex) => {
+        userRegisterData.append(
+          `medicalHistory[${index}][treatments][${tIndex}]`,
+          treatments.trim()
+        );
+      });
     });
 
-    data.medication.forEach((item, index) => {
-      userRegisterData.append(`medication[${index}][name]`, item.name);
-      userRegisterData.append(`medication[${index}][dosage]`, item.dosage);
-      userRegisterData.append(`medication[${index}][frequency]`, item.frequency);
+    data.medications.forEach((item, index) => {
+      userRegisterData.append(`medications[${index}][name]`, item.name);
+      userRegisterData.append(`medications[${index}][dosage]`, item.dosage);
+      userRegisterData.append(`medications[${index}][frequency]`, item.frequency);
     });
 
     if (selectedImage) {
-      userRegisterData.append("aadharCardImage", selectedImage);
+      userRegisterData.append("aadharCardImageUrl", selectedImage);
     }
 
     console.log(...userRegisterData); // For debugging purposes
-    const response = updateElderlyUserRegistration(userRegisterData);
+    const response = registerElderly(userRegisterData);
     console.log(response); // For debugging purposes
   };
 
@@ -113,16 +125,13 @@ const UserRegistration = () => {
                 type="tel"
                 placeholder="+91"
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
-                {...register("mobileNumber", {
+                {...register("phoneNumber", {
                   required: "Mobile number is required",
-                  pattern: {
-                    value: /^\+91\d{10}$/,
-                    message: "Invalid mobile number format",
-                  },
+               
                 })}
               />
-              {errors.mobileNumber && (
-                <p className="text-red-500">{errors.mobileNumber.message}</p>
+              {errors.phoneNumber && (
+                <p className="text-red-500">{errors.phoneNumber.message}</p>
               )}
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
@@ -182,7 +191,7 @@ const UserRegistration = () => {
                     appendMedicalHistory({
                       condition: "",
                       diagnosisDate: "",
-                      treatment: "",
+                      treatments: "",
                     })
                   }
                 >
@@ -232,16 +241,16 @@ const UserRegistration = () => {
                     )}
                   </div>
                   <div className="my-2 w-full grid grid-cols-2 items-center">
-                    <label className="text-xl">Treatment</label>
+                    <label className="text-xl">treatments</label>
                     <input
                       className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
-                      {...register(`medicalHistory.${idx}.treatment`, {
-                        required: "Treatment is required",
+                      {...register(`medicalHistory.${idx}.treatments`, {
+                        required: "treatments is required",
                       })}
                     />
-                    {errors?.medicalHistory?.[idx]?.treatment && (
+                    {errors?.medicalHistory?.[idx]?.treatments && (
                       <p className="text-red-500">
-                        {errors?.medicalHistory?.[idx]?.treatment?.message}
+                        {errors?.medicalHistory?.[idx]?.treatments?.message}
                       </p>
                     )}
                   </div>
@@ -283,13 +292,13 @@ const UserRegistration = () => {
                     <label className="text-xl">Name</label>
                     <input
                       className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
-                      {...register(`medication.${idx}.name`, {
+                      {...register(`medications.${idx}.name`, {
                         required: "Name is required",
                       })}
                     />
-                    {errors?.medication?.[idx]?.name && (
+                    {errors?.medications?.[idx]?.name && (
                       <p className="text-red-500">
-                        {errors?.medication?.[idx]?.name?.message}
+                        {errors?.medications?.[idx]?.name?.message}
                       </p>
                     )}
                   </div>
@@ -302,9 +311,9 @@ const UserRegistration = () => {
                         required: "Dosage is required",
                       })}
                     />
-                    {errors?.medication?.[idx]?.dosage && (
+                    {errors?.medications?.[idx]?.dosage && (
                       <p className="text-red-500">
-                        {errors?.medication?.[idx]?.dosage?.message}
+                        {errors?.medications?.[idx]?.dosage?.message}
                       </p>
                     )}
                   </div>
@@ -313,13 +322,13 @@ const UserRegistration = () => {
                     <input
                       type="text"
                       className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
-                      {...register(`medication.${idx}.frequency`, {
+                      {...register(`medications.${idx}.frequency`, {
                         required: "Frequency is required",
                       })}
                     />
-                    {errors?.medication?.[idx]?.frequency && (
+                    {errors?.medications?.[idx]?.frequency && (
                       <p className="text-red-500">
-                        {errors?.medication?.[idx]?.frequency?.message}
+                        {errors?.medications?.[idx]?.frequency?.message}
                       </p>
                     )}
                   </div>

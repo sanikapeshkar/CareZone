@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Controller, useForm } from "react-hook-form";
 import Sidebar from "../Sidebar";
 import BasicDatePicker from "../BasicDatePicker";
 import BasicTimePicker from "../BasicTimePicker";
-import { postEvent } from "../../services/eventData.service";
+import { ElderlyContext } from "./UserContext";
 
 const CreateEvent = () => {
   const { register, handleSubmit, setValue, control } = useForm();
+  const { createEvent } = useContext(ElderlyContext);
 
   const onSubmit = async (data) => {
     const eventData = {
@@ -19,17 +20,11 @@ const CreateEvent = () => {
       cost: Number(data.cost),
     };
 
-    try {
-      await postEvent(eventData);
-      alert("Event created successfully!");
-    } catch (error) {
-      console.error("Error creating event:", error);
-      alert("Failed to create event.");
-    }
+    createEvent(eventData);
   };
 
   const handleLastEnrollmentDateChange = (date) => {
-    console.log('lastEnrollmentDate', date);
+    console.log("lastEnrollmentDate", date);
     setValue("lastDateToEnroll", date);
   };
 
@@ -84,7 +79,9 @@ const CreateEvent = () => {
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
               <label className="text-xl text-[#1a1a1a]">Event Time</label>
-              <BasicTimePicker onChange={(time) => setValue("eventTime", time)} />
+              <BasicTimePicker
+                onChange={(time) => setValue("eventTime", time)}
+              />
               <input type="hidden" {...register("eventTime")} />
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
@@ -97,7 +94,9 @@ const CreateEvent = () => {
               />
             </div>
             <div className="my-2 w-full grid grid-cols-2 items-center">
-              <label className="text-xl text-[#1a1a1a]">Last Date to Enroll</label>
+              <label className="text-xl text-[#1a1a1a]">
+                Last Date to Enroll
+              </label>
               <Controller
                 name="lastDateToEnroll"
                 control={control}

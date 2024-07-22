@@ -3,18 +3,18 @@ import React from 'react'
 export const CTSidebarData = [
     {
         title: 'Dashboard',
-        link: '/ctdashboard',
+        link: 'caretaker/ctdashboard',
     },
     {
         title: 'My Requests',
-        link: '/ctrequests',
+        link: 'caretaker/ctrequests',
     },
     {
         title: 'My Customers',
-        link: '/ctcustomers',
+        link: 'caretaker/ctcustomers',
     },
     {
         title: 'Customer Reviews',
-        link: '/ctreviews',
+        link: 'caretaker/ctreviews',
     },
 ]

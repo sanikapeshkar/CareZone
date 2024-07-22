@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CTSidebar from "./CTSidebar";
 import { CustomerData } from "./CustomerData";
 import { CTProfileData } from "./CTProfileData";
 import careTakerService from "../../services/CareTaker.service";
+import { CTContext } from "./CTContext";
 
-const { getCareTakerDashboarddata } = careTakerService;
 const CTDashboard = () => {
   const [dashboardData, setdashboardData] = useState();
   // Calculate total customers
@@ -21,19 +21,14 @@ const CTDashboard = () => {
   const avgRating =
     reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
 
-  async function getDahsboarddata() {
-    const response = await getCareTakerDashboarddata();
-
-    if (response) {
-      setdashboardData(response);
-    }
-  }
+  const { state, getDashboardData } = useContext(CTContext);
+ 
   useEffect(() => {
-    getDahsboarddata();
+    getDashboardData();
   }, []);
   return (
     <div className="w-screen">
-      <CTSidebar />
+
       <div className="w-4/5 ml-auto p-4">
         <h1 className="text-4xl font-semibold text-[#8883f0] mt-3">
           Dashboard
@@ -44,7 +39,7 @@ const CTDashboard = () => {
               Total Customers
             </h1>
             <h1 className="text-[150px] w-full rounded-2 mt-1 bg-slate-50 text-center">
-              {dashboardData ? dashboardData.activeAppointments : 0}
+              {state.dashboardData ? state.dashboardData.activeAppointments : 0}
             </h1>
           </div>
           <div className="flex flex-col items-center">
@@ -52,7 +47,7 @@ const CTDashboard = () => {
               Current Customers
             </h1>
             <h1 className="text-[150px] w-full rounded-2 mt-1 bg-slate-50 text-center">
-              {dashboardData ? dashboardData.totalAppointments : 0}
+              {state.dashboardData ? state.dashboardData.totalAppointments : 0}
             </h1>
           </div>
           <div className="flex flex-col items-center col-span-2">
@@ -60,7 +55,10 @@ const CTDashboard = () => {
               Average Rating
             </h1>
             <h1 className="text-[150px] w-full rounded-2 mt-1 bg-slate-50 text-center">
-              {dashboardData.averageRating.toFixed(1)}/5
+              {state.dashboardData
+                ? state.dashboardData.averageRating.toFixed(1)
+                : 0}
+              /5
             </h1>
           </div>
         </div>

@@ -32,8 +32,12 @@ const careTakerService = {
       throw error;
     }
   },
+  // getAllCustomers
 
 
+  //get All reuqests 
+
+  
 }
 
 export default careTakerService;
