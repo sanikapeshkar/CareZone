@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useState } from 'react';
 import cross from './../media/cross.png';
-import EventData from './../userdashboard/EventData';
+import EventData from './../data/EventData';
 
 const EditProfilePopup = ({ onClose }) => {
     const popupRef = useRef();

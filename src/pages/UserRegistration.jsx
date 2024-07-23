@@ -8,8 +8,7 @@ import { registerElderly } from "../services/elderly.service";
 import { useNavigate } from "react-router-dom";
 
 const UserRegistration = () => {
-
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     control,
@@ -87,7 +86,10 @@ const UserRegistration = () => {
     data.medications.forEach((item, index) => {
       userRegisterData.append(`medications[${index}][name]`, item.name);
       userRegisterData.append(`medications[${index}][dosage]`, item.dosage);
-      userRegisterData.append(`medications[${index}][frequency]`, item.frequency);
+      userRegisterData.append(
+        `medications[${index}][frequency]`,
+        item.frequency
+      );
     });
 
     if (selectedImage) {
@@ -96,8 +98,8 @@ const UserRegistration = () => {
 
     console.log(...userRegisterData); // For debugging purposes
     const response = registerElderly(userRegisterData);
-    if(response){
-      navigate('/userdashboard')
+    if (response) {
+      navigate("/userdashboard");
     }
   };
 
@@ -132,7 +134,6 @@ const UserRegistration = () => {
                 className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
                 {...register("phoneNumber", {
                   required: "Mobile number is required",
-               
                 })}
               />
               {errors.phoneNumber && (
@@ -329,6 +330,9 @@ const UserRegistration = () => {
                       className="rounded-2 border-1 border-[#dae3f0] p-1 px-2 bg-transparent"
                       {...register(`medications.${idx}.frequency`, {
                         required: "Frequency is required",
+                        validate: (value) =>
+                          parseInt(value) <= 3 ||
+                          "Frequency must be less than or equal to 3",
                       })}
                     />
                     {errors?.medications?.[idx]?.frequency && (

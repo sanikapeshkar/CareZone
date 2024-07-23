@@ -1,20 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CTSidebar from "./CTSidebar";
 import { CustomerData } from "./CustomerData";
+import { CTContext } from "./CTContext";
 
 const CTCustomers = () => {
   const [view, setView] = useState("all");
-
+  const {
+    state,
+    fetchAllCustomers,
+    fetchCurrentCustomers,
+    fetchPastCustomers,
+  } = useContext(CTContext);
   const filterCustomers = () => {
     if (view === "current") {
-      return CustomerData.filter((customer) => customer.iscurrent);
+      return state.currentCustomers;
     } else if (view === "past") {
-      return CustomerData.filter((customer) => !customer.iscurrent);
+      return state.pastCustomers;
     } else {
-      return CustomerData;
+      return state.allCustomers;
     }
   };
 
+  useEffect(() => {
+    fetchAllCustomers();
+    fetchCurrentCustomers();
+    fetchPastCustomers();
+  }, []);
+
+  console.log(state);
   const customersToDisplay = filterCustomers();
 
   return (

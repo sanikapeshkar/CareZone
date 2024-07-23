@@ -97,12 +97,12 @@ const HireCT = () => {
               </div>
               <div className="mt-8 px-2 w-full flex flex-col">
                 <div className="flex items-center my-2">
-                  <h1 className="text-xl w-2/5">Rates per Month</h1>
+                  <h1 className="text-xl w-2/5">Rates per Month (in Rs)</h1>
                   <p className="text-xl">{selectedCaretaker.ratePerMonth}</p>
                 </div>
                 <div className="flex items-center my-2">
                   <h1 className="text-xl w-2/5">Experience</h1>
-                  <p className="text-xl">{selectedCaretaker.workExperience}</p>
+                  <p className="text-xl">{selectedCaretaker.workExperience} years</p>
                 </div>
                 <div className="flex items-center my-2">
                   <h1 className="text-xl w-2/5">Services</h1>

@@ -47,14 +47,17 @@ const Homepage = () => {
           <h1 className="text-4xl font-bold text-[#8883f0]">Grammie</h1>
         </div>
         <h1 className="text-5xl mt-12 text-[#928df1]">Welcome back</h1>
-        <h3 className="text-2xl text-[#95989d]">
+        <h3 className="my-2 mx-2 text-lg text-[#95989d]">
           Login to your account or create one using google
         </h3>
+        <div className="p-0 mx-2 mt-5">
         <GoogleLogin
+  
           onSuccess={handleSuccessfulLogin}
           onError={handleFailedLogin}
           useOneTap
         />
+        </div>
       </div>
     </div>
   );
