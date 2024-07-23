@@ -59,8 +59,9 @@ const ElderlyActions = (dispatch) => {
 
   // function to create an event
 
-  function createEvent(data) {
-    postAnEvent(data);
+  async function createEvent(data) {
+   const response= await postAnEvent(data);
+   return response;
   }
 
   async function getAppointmentsUser() {

@@ -91,7 +91,7 @@ const AttendEvent = () => {
                       Enroll Now
                     </button>
                     <button className="w-[200px] m-1 p-2 px-4 rounded-3 bg-green-400 hover:scale-[1.02] duration-100">
-                      Call Now
+                    <a href="tel:123-456-7890p123"> Call Now</a> 
                     </button>
                   </div>
                 </div>

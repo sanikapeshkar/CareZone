@@ -41,11 +41,11 @@ const Dashboard = () => {
                   >
                     <img
                       className="h-12 w-12 rounded-full mr-2"
-                      src={val.pictureUrl}
-                      alt={val.firstName}
+                      src={val.userId.pictureUrl}
+                      alt={val.userId.firstName}
                     />
                     <h1 className="text-xl">
-                      {val.firstName} {val.lastName}
+                      {val.userId.firstName} {val.userId.lastName}
                     </h1>
                   </div>
                 ))

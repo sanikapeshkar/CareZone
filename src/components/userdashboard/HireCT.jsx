@@ -91,7 +91,7 @@ const HireCT = () => {
                     />
                   )}
                   <button className="bg-green-500 text-white p-2 px-4 rounded">
-                    Call Me
+                  <a href={`tel:${selectedCaretaker.phoneNumber}`}> Call Me</a>
                   </button>
                 </div>
               </div>
