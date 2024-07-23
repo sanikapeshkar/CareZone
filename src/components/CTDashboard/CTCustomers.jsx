@@ -13,11 +13,11 @@ const CTCustomers = () => {
   } = useContext(CTContext);
   const filterCustomers = () => {
     if (view === "current") {
-      return CustomerData.filter((customer) => customer.iscurrent);
+      return state.currentCustomers;
     } else if (view === "past") {
-      return CustomerData.filter((customer) => !customer.iscurrent);
+      return state.pastCustomers;
     } else {
-      return CustomerData;
+      return state.allCustomers;
     }
   };
 
