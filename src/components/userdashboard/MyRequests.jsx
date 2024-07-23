@@ -22,6 +22,7 @@ const MyRequests = () => {
     getAppointmentsUser();
   }, []);
 
+
   return (
     <div className="flex w-screen">
       <Sidebar />
