@@ -29,7 +29,7 @@ const Dashboard = () => {
         </h1>
         <div className="w-full p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col p-4 rounded-lg">
-            <h1 className="bg-[#8883f0] text-white font-semibold text-center text-2xl mb-2 p-2 rounded-lg">
+            <h1 className="bg-[#8883f0] text-white font-semibold text-center text-2xl mb-1 p-2 rounded-lg">
               Hired Caretakers
             </h1>
             <div className="p-4 py-2 bg-slate-200 rounded-lg">

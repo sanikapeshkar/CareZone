@@ -1,4 +1,3 @@
-import { resolveDateFormat } from "@mui/x-date-pickers/internals/utils/date-utils";
 import { axiosInstance } from "./axiosInstance";
 
 const careTakerService = {
@@ -21,23 +20,70 @@ const careTakerService = {
     }
   },
 
-  getCareTakerDashboarddata: async (data) => {
+  getCareTakerDashboardData: async () => {
     try {
       const response = await axiosInstance.get(`/api/user/careTaker/dashboard`);
-      console.log("get careTaker dashboard Data ", response);
-      
+      console.log("get careTaker dashboard Data", response);
       return response.data.data;
     } catch (error) {
-      console.error("Error registering caretaker:", error);
+      console.error("Error fetching caretaker dashboard data:", error);
       throw error;
     }
   },
-  // getAllCustomers
 
+  getAllCustomers: async () => {
+    try {
+      const response = await axiosInstance.get('/api/appointment/careTaker/curr');
+      console.log('all customers',response);
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching all customers:', error);
+      throw error;
+    }
+  },
 
-  //get All reuqests 
+  getCurrentCustomers: async () => {
+    try {
+      const response = await axiosInstance.get('/api/appointment/careTaker/curr?status=accepted');
+      console.log('current customers',response);
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching current customers:', error);
+      throw error;
+    }
+  },
 
-  
-}
+  getPastCustomers: async () => {
+    try {
+      const response = await axiosInstance.get('/api/appointment/careTaker/terminated');
+      console.log('past customers',response);
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching past customers:', error);
+      throw error;
+    }
+  },
+
+  getAllPendingRequests: async () => {
+    try {
+      const response = await axiosInstance.get('/api/appointment/careTaker/curr?status=pending')
+      console.log('response from pending requests ',response)
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching pending requests:', error);
+      throw error;
+    }
+  },
+
+  updateStatusForCustomer: async (appointmentId, status) => {
+    try {
+      const response = await axiosInstance.patch(`/api/appointment/careTaker/curr/${appointmentId}`, { status });
+      return response.data.data;
+    } catch (error) {
+      console.error('Error updating customer status:', error);
+      throw error;
+    }
+  }
+};
 
 export default careTakerService;
