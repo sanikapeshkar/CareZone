@@ -67,3 +67,14 @@ export async function postAnEvent(data) {
     throw error;
   }
 }
+
+export async function getAllappointments() {
+  try {
+    const response = await axiosInstance.get(`/api/appointment/user/curr`);
+    console.log("get all appointments  ", response);
+    return response.data.data;
+  } catch (error) {
+    console.error("Error", error);
+    throw error;
+  }
+}

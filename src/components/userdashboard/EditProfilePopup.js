@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import BasicDatePicker from '../BasicDatePicker';
 import BasicTimePicker from '../BasicTimePicker';
 import cross from './../media/cross.png';
-import EventData from './EventData';
+import EventData from '../data/EventData';
 
 const EditProfilePopup = ({ onClose }) => {
     const popupRef = useRef();

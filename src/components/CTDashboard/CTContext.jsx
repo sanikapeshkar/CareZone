@@ -1,10 +1,9 @@
 import { createContext, useReducer } from "react";
-import { reducer, actionTypes } from "./CT.state"; 
-import careTakerService from '../../services/CareTaker.service'
+import { reducer, actionTypes } from "./CT.state";
+import careTakerService from "../../services/CareTaker.service";
 export const CTContext = createContext();
 
-
-const {getCareTakerDashboarddata}=careTakerService;
+const { getCareTakerDashboarddata } = careTakerService;
 const initialState = {
   data: {},
   dashboardData: null,
@@ -17,7 +16,7 @@ export const CTProvider = ({ children }) => {
   return (
     <CTContext.Provider
       value={{
-        state, 
+        state,
         ...actions,
       }}
     >
@@ -34,15 +33,6 @@ const CareTakerActions = (dispatch) => {
       dispatch({ type: actionTypes.SET_DASHBOARD_DATA, payload: response });
     }
   }
-
-
-//   async function getAllCTCustomers() {
-//     const response = await getAllCustomers();
-//     console.log("response from getAllcustomers", response);
-//     if (response) {
-//       dispatch({ type: actionTypes.SET_DASHBOARD_DATA, payload: response });
-//     }
-//   }
 
 
   return { getDashboardData };

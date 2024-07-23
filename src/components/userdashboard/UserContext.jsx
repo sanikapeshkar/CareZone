@@ -1,12 +1,19 @@
 import { createContext, useReducer } from "react";
 import { reducer, actionTypes } from "./User.state";
-import getAllCareTaker, { getElderlyDashboardData,getElderlyProfileData,HireCT, postAnEvent } from "../../services/elderly.service";
+import getAllCareTaker, {
+  getAllappointments,
+  getElderlyDashboardData,
+  getElderlyProfileData,
+  HireCT,
+  postAnEvent,
+} from "../../services/elderly.service";
 
 export const ElderlyContext = createContext();
 
 const initialState = {
   data: [],
   profileData: [],
+  appointments: [],
 };
 
 export const ElderlyProvider = ({ children }) => {
@@ -34,10 +41,10 @@ const ElderlyActions = (dispatch) => {
     }
   }
 
-  // get all careTaker data 
+  // get all careTaker data
   async function getAllCareTakerData() {
     const response = await getAllCareTaker();
-   
+
     if (response) {
       dispatch({ type: actionTypes.SET_DATA, payload: response });
     }
@@ -45,18 +52,26 @@ const ElderlyActions = (dispatch) => {
 
   //hire CareTaker
 
-   function hireCareTaker(data, ctId) {
-
-    const response =  HireCT(data, ctId);
+  function hireCareTaker(data, ctId) {
+    const response = HireCT(data, ctId);
     console.log("response from HireCT", response);
   }
 
-  // function to create an event 
+  // function to create an event
 
-  function createEvent(data){
+  function createEvent(data) {
     postAnEvent(data);
-
   }
 
-  return { getProfileData,hireCareTaker,createEvent,getAllCareTakerData };
+  async function getAppointmentsUser() {
+    const response = await getAllappointments();
+    dispatch({ type: actionTypes.SET_APPOINTMENTS, payload: response });
+  }
+  return {
+    getProfileData,
+    hireCareTaker,
+    createEvent,
+    getAllCareTakerData,
+    getAppointmentsUser,
+  };
 };

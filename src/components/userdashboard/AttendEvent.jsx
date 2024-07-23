@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../Sidebar";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import HireMePopup from "./HireMePopup";
+import { format } from "date-fns";
 import { getEventData, enrollEvent } from "../../services/eventData.service";
+import HireMePopup from "./HireMePopup";
 
 const AttendEvent = () => {
   const [eventData, setEventData] = useState([]);
@@ -16,7 +14,7 @@ const AttendEvent = () => {
     try {
       const data = await getEventData();
       setEventData(data);
-      setSelectedEvent(data[0]); // Optionally set the first event as selected
+      setSelectedEvent(data[0]);
     } catch (error) {
       console.error("Error fetching event data:", error);
     }
@@ -43,15 +41,18 @@ const AttendEvent = () => {
     if (!selectedEvent) return;
 
     try {
-     
-      const response=await enrollEvent(selectedEvent._id); 
-      console.log('Enroll in event ',response);
+      const response = await enrollEvent(selectedEvent._id);
+      console.log('Enroll in event ', response);
       alert("Successfully enrolled in the event!");
     } catch (error) {
       console.error("Error enrolling in event:", error);
       alert("Enrollment failed!");
     }
   };
+
+  // Format date and time using date-fns
+  const formatDate = (date) => format(new Date(date), 'MMMM d, yyyy');
+  const formatTime = (date) => format(new Date(date), 'h:mm a');
 
   return (
     <div className="w-screen flex">
@@ -68,10 +69,10 @@ const AttendEvent = () => {
               <div
                 key={key}
                 id="ctbackground"
-                className="hover:bg-slate-200 h-30 m-2 p-4 flex items-center rounded-4 cursor-pointer"
+                className="hover:bg-slate-200 h-30 m-2 p-2 flex items-center rounded-4 cursor-pointer"
                 onClick={() => handleEventClick(val)}
               >
-                <h1 className="text-[#1b1b1b] text-xl font-[500]">
+                <h1 className="text-[#1b1b1b] text-lg font-[500]">
                   {val.title}
                 </h1>
               </div>
@@ -79,7 +80,7 @@ const AttendEvent = () => {
           </div>
           <div className="w-[70%]">
             {selectedEvent && (
-              <div className="p-4 w-full">
+              <div className="p-6 w-full">
                 <div className="flex flex-row items-center justify-between">
                   <h1 className="text-xl">Live, Laugh and Love</h1>
                   <div className="flex flex-col items-center ml-auto">
@@ -94,7 +95,7 @@ const AttendEvent = () => {
                     </button>
                   </div>
                 </div>
-                <h1 className="text-4xl text-[#8883f0] font-semibold my-2">
+                <h1 className="text-3xl text-[#8883f0] font-semibold my-2">
                   {selectedEvent.title}
                 </h1>
                 <h1 className="my-2 mb-4">{selectedEvent.description}</h1>
@@ -105,11 +106,11 @@ const AttendEvent = () => {
                   </div>
                   <div className="flex my-2">
                     <h1 className="flex-1 text-xl font-semibold">Date: </h1>
-                    <h1 className="text-xl">{selectedEvent.dateTime}</h1>
+                    <h1 className="text-xl">{formatDate(selectedEvent.dateTime)}</h1>
                   </div>
                   <div className="flex my-2">
                     <h1 className="flex-1 text-xl font-semibold">Time: </h1>
-                    <h1 className="text-xl">{selectedEvent.dateTime}</h1>
+                    <h1 className="text-xl">{formatTime(selectedEvent.dateTime)}</h1>
                   </div>
                   <div className="flex my-2">
                     <h1 className="flex-1 text-xl font-semibold">Duration: </h1>
@@ -119,7 +120,7 @@ const AttendEvent = () => {
                     <h1 className="flex-1 text-xl font-semibold">
                       Last Enrollment:{" "}
                     </h1>
-                    <h1 className="text-xl">{selectedEvent.lastDateToEnrol}</h1>
+                    <h1 className="text-xl">{formatDate(selectedEvent.lastDateToEnrol)}</h1>
                   </div>
                   <div className="flex my-2">
                     <h1 className="flex-1 text-xl font-semibold">Cost: </h1>

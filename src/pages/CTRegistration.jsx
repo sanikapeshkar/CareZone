@@ -27,7 +27,7 @@ const CTRegistration = () => {
   };
 
   // onSubmit form
-  function handleCitizenRegister(data) {
+  async function handleCitizenRegister(data) {
     const formData = new FormData();
     formData.append("location", data.location);
     formData.append("phoneNumber", data.phoneNumber);
@@ -44,9 +44,10 @@ const CTRegistration = () => {
     }
 
     console.log("on Register submit", formData);
-    const response = registerCareTaker(formData);
-
-    if (response) {
+    const response = await registerCareTaker(formData);
+    console.log({...formData});
+  console.log(response);
+    if (response.ok) {
       navigate(`/caretaker/ctdashboard`);
     }
   }

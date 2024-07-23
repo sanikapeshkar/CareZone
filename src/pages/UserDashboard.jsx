@@ -3,7 +3,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { ElderlyContext } from "../components/userdashboard/UserContext";
-
+import { format } from "date-fns";
 const Dashboard = () => {
   const { state, getProfileData } = useContext(ElderlyContext);
   const [loading, setLoading] = useState(true);
@@ -19,6 +19,7 @@ const Dashboard = () => {
       </div>
     );
   }
+  const formatDate = (date) => format(new Date(date), "MMMM d, yyyy");
 
   return (
     <div className="w-screen flex">
@@ -71,9 +72,15 @@ const Dashboard = () => {
               {state.profileData?.attendingEvents?.length ? (
                 <>
                   <h1 className="text-center p-2 my-2 bg-white text-xl rounded-lg">
-                    {state.profileData.attendingEvents[0].title}
-                    {state.profileData.attendingEvents[0].dateTime}
-                    {state.profileData.attendingEvents[0].location}
+                    <h2> {state.profileData.attendingEvents[0].title}</h2>
+                    <h2>
+                      {" "}
+                      {formatDate(
+                        state.profileData.attendingEvents[0].dateTime
+                      )}
+                    </h2>
+
+                    <h2> {state.profileData.attendingEvents[0].location}</h2>
                   </h1>
                 </>
               ) : (
