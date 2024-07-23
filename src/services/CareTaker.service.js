@@ -75,9 +75,10 @@ const careTakerService = {
     }
   },
 
-  updateStatusForCustomer: async (appointmentId, status) => {
+  updateStatusForCustomers: async (appointmentId, status) => {
     try {
-      const response = await axiosInstance.patch(`/api/appointment/careTaker/curr/${appointmentId}`, { status });
+      console.log(appointmentId,status)
+      const response = await axiosInstance.patch(`/api/appointment/updateStatus/${appointmentId}`, { "status":status });
       return response.data.data;
     } catch (error) {
       console.error('Error updating customer status:', error);

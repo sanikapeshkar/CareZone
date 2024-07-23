@@ -10,7 +10,7 @@ const {
   getCurrentCustomers,
   getPastCustomers,
   getAllPendingRequests,
-  updateStatusForCustomer,
+  updateStatusForCustomers,
 } = careTakerService;
 
 const initialState = {
@@ -77,7 +77,7 @@ const CareTakerActions = (dispatch) => {
   }
 
   async function updateStatusForCustomer(appointmentId, status) {
-    const response = updateStatusForCustomer(appointmentId, status);
+    const response = await updateStatusForCustomers(appointmentId, status);
     console.log(response);
   }
   return {

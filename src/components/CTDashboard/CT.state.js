@@ -11,7 +11,7 @@ export const reducer = (state, action) => {
     case actionTypes.SET_DASHBOARD_DATA:
       return { ...state, dashboardData: action.payload };
     case actionTypes.SET_ALL_CUSTOMERS:
-      return { ...state, allCustomers: action.payload };
+      return { ...state, allCustomers: [action.payload] };
     case actionTypes.SET_CURRENT_CUSTOMERS:
       return { ...state, currentCustomers: action.payload };
     case actionTypes.SET_PAST_CUSTOMERS:
