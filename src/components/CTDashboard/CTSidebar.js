@@ -8,6 +8,7 @@ import { CTContext } from './CTContext'
 const CTSidebar = () => {
 
     const {state}=useContext(CTContext);
+ 
     return (
         <div className='w-1/5 h-screen bg-[#8883f0] flex flex-col items-center fixed'>
             <h1 className='my-8 text-5xl font-semibold text-white'>Grammie</h1>
@@ -26,7 +27,7 @@ const CTSidebar = () => {
                 </Link>
                 <div className='flex flex-col h-24'>
                     <Link to="/ctprofile">
-                        <h3 className='my-2 text-xl'>{CTProfileData[0].ctusername}</h3>
+                        <h3 className='my-2 text-xl'>{state?.dashboardData?.careTaker?.firstName}</h3>
                     </Link>
                     <Link to="/">
                         <h3 className='p-2 px-4 bg-[#ebebeb] text-[#8883f0] rounded-2'>Logout</h3>
