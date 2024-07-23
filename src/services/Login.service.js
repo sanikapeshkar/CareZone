@@ -9,10 +9,10 @@ export const loginUser = async (credential) => {
       },
     });
 
-    console.log('Login Response',data);
+    console.log('Login Response',data.data);
     const token = data.data.token;
-    const role = data.data.role
-    if (token && role) {
+    const role = data.data.role 
+    if (token ) {
       localStorage.setItem("token", token);
 
     }

@@ -41,11 +41,11 @@ const Dashboard = () => {
                   >
                     <img
                       className="h-12 w-12 rounded-full mr-2"
-                      src={val.pictureUrl}
-                      alt={val.firstName}
+                      src={val.userId.pictureUrl}
+                      alt={val.userId.firstName}
                     />
-                    <h1 className="text-xl">
-                      {val.firstName} {val.lastName}
+                    <h1 className="text-xl text-black">
+                      {val.userId?.firstName} {val.userId?.lastName} 
                     </h1>
                   </div>
                 ))
@@ -70,19 +70,13 @@ const Dashboard = () => {
             </h1>
             <div className="bg-slate-200 p-4 py-2 rounded-lg">
               {state.profileData?.attendingEvents?.length ? (
-                <>
-                  <h1 className="text-center p-2 my-2 bg-white text-xl rounded-lg">
-                    <h2> {state.profileData.attendingEvents[0].title}</h2>
-                    <h2>
-                      {" "}
-                      {formatDate(
-                        state.profileData.attendingEvents[0].dateTime
-                      )}
-                    </h2>
-
-                    <h2> {state.profileData.attendingEvents[0].location}</h2>
-                  </h1>
-                </>
+                state.profileData.attendingEvents.map((event, index) => (
+                  <div key={index} className="text-center p-2 my-2 bg-white text-xl rounded-lg">
+                    <h2>{event.title}</h2>
+                    <h2>{formatDate(event.dateTime)}</h2>
+                    <h2>{event.location}</h2>
+                  </div>
+                ))
               ) : (
                 <p>No upcoming events</p>
               )}
