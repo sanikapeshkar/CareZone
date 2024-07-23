@@ -48,6 +48,7 @@ export default async function getAllCareTaker() {
 
 export async function HireCT(data, ctId) {
   try {
+    console.log(data,ctId);
     const response = await axiosInstance.post(`/api/appointment/${ctId}`, data);
     console.log("Hire CT  ", response);
     return response.data.data;
