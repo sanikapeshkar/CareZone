@@ -44,8 +44,10 @@ const Dashboard = () => {
                       src={val.userId.pictureUrl}
                       alt={val.userId.firstName}
                     />
+
                     <h1 className="text-xl text-black">
                       {val.userId?.firstName} {val.userId?.lastName} 
+
                     </h1>
                   </div>
                 ))

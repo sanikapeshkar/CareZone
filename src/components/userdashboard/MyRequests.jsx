@@ -8,11 +8,11 @@ const MyRequests = () => {
   console.log(state);
   const getStatusStyle = (status) => {
     switch (status) {
-      case "Pending":
+      case "pending":
         return "bg-slate-300 text-white";
-      case "Accepted":
+      case "accepted":
         return "bg-green-500 text-white";
-      case "Rejected":
+      case "rejected":
         return "bg-red-500 text-white";
       default:
         return "";

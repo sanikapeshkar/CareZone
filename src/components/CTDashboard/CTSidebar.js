@@ -8,7 +8,7 @@ import { CTContext } from './CTContext'
 const CTSidebar = () => {
 
     const {state}=useContext(CTContext);
-
+ 
     return (
         <div className='w-1/5 h-screen bg-[#8883f0] flex flex-col items-center fixed'>
             <h1 className='my-8 text-5xl font-semibold text-white'>Grammie</h1>

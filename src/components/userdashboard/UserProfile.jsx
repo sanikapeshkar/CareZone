@@ -21,8 +21,8 @@ const UserProfile = () => {
     const user = state.profileData?.user || {};
     const hiredCaretakers = state.profileData?.appointments || [];
     const myEvents = state.profileData?.attendingEvents || [];
-    const medicalHistory = state.profileData?.medicalHistory || [];
-
+    const medicalHistory = state.profileData?.user?.medicalHistory || [];
+ 
     const renderActiveComponent = () => {
         switch (activeComponent) {
             case 'HiredCaretakers':
@@ -78,11 +78,11 @@ const UserProfile = () => {
                                     </div>
                                     <div className='flex my-1'>
                                         <h1 className='flex-1'>Diagnosis Date</h1>
-                                        <h1 className='text-lg'>{history.date}</h1>
+                                        <h1 className='text-lg'>{history.diagnosisDate}</h1>
                                     </div>
                                     <div className='flex my-1'>
                                         <h1 className='flex-1'>Treatment</h1>
-                                        <h1 className='text-lg'>{history.treatment}</h1>
+                                        <h1 className='text-lg'>{history.treatments}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -120,8 +120,8 @@ const UserProfile = () => {
                     <div className='flex items-center'>
                         <img className='w-24 h-24 mr-8' src={usericon} alt='User'></img>
                         <div>
-                            <h1 className='text-xl my-1'>Name of User</h1>
-                            <h1 className='my-1'>{user.firstName} {user.lastName}</h1>
+                            <h1 className='text-xl my-1'>{user.firstName} {user.lastName}</h1>
+                            <h1 className='my-1'>{user.email}</h1>
                             <h1>{user.location}</h1>
                         </div>
                     </div>

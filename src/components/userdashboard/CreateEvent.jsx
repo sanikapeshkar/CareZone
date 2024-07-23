@@ -6,7 +6,7 @@ import BasicTimePicker from "../BasicTimePicker";
 import { ElderlyContext } from "./UserContext";
 
 const CreateEvent = () => {
-  const { register, handleSubmit, setValue, control } = useForm();
+  const { register, handleSubmit, setValue, control,reset } = useForm();
   const { createEvent } = useContext(ElderlyContext);
 
   const onSubmit = async (data) => {
@@ -20,7 +20,8 @@ const CreateEvent = () => {
       cost: Number(data.cost),
     };
 
-    createEvent(eventData);
+    const response=createEvent(eventData);
+    reset();
   };
 
   const handleLastEnrollmentDateChange = (date) => {
