@@ -13,8 +13,5 @@ export const CTSidebarData = [
         title: 'My Customers',
         link: 'caretaker/ctcustomers',
     },
-    {
-        title: 'Customer Reviews',
-        link: 'caretaker/ctreviews',
-    },
+  
 ]

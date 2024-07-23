@@ -22,7 +22,7 @@ const CTSidebar = () => {
             <div className='mb-4 ml-2 mt-auto flex items-center mr-auto ml-0'>
                 <Link to="/ctprofile">
                     <div className='rounded-full h-24 w-24 mr-4'>
-                        <img className='w-full' src={usericon}></img>
+                        <img className='w-full rounded-full' src={state?.dashboardData?.careTaker?.pictureUrl}></img>
                     </div>
                 </Link>
                 <div className='flex flex-col h-24'>

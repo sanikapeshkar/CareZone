@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import CTSidebar from "./CTSidebar";
-import { CustomerData } from "./CustomerData";
 import { CTContext } from "./CTContext";
 
 const CTCustomers = () => {
@@ -11,13 +10,14 @@ const CTCustomers = () => {
     fetchCurrentCustomers,
     fetchPastCustomers,
   } = useContext(CTContext);
+
   const filterCustomers = () => {
     if (view === "current") {
-      return state.currentCustomers;
+      return state.currentCustomers || [];
     } else if (view === "past") {
-      return state.pastCustomers;
+      return state.pastCustomers || [];
     } else {
-      return state.allCustomers;
+      return state.allCustomers || [];
     }
   };
 
@@ -27,7 +27,8 @@ const CTCustomers = () => {
     fetchPastCustomers();
   }, []);
 
-  console.log(state);
+
+  console.log(state)
   const customersToDisplay = filterCustomers();
 
   return (
@@ -78,20 +79,24 @@ const CTCustomers = () => {
                   Date
                 </h1>
               </div>
-              {customersToDisplay.map((val, key) => (
-                <div
-                  key={key}
-                  className="grid grid-cols-3 w-full justify-between items-center pt-4 px-4 mb-4"
-                >
-                  <h1 className="text-xl">{val.customername}</h1>
-                  <h1 className="ml-12 w-[200px] text-center text-xl">
-                    {val.customerlocation}
-                  </h1>
-                  <h1 className="ml-12 w-[200px] text-center text-xl">
-                    {val.date}
-                  </h1>
-                </div>
-              ))}
+              {Array.isArray(customersToDisplay) && customersToDisplay.length > 0 ? (
+                customersToDisplay.map((val, key) => (
+                  <div
+                    key={val.id || key} // Ensure unique keys
+                    className="grid grid-cols-3 w-full justify-between items-center pt-4 px-4 mb-4"
+                  >
+                    <h1 className="text-xl">{val.userId.firstName}</h1>
+                    <h1 className="ml-12 w-[200px] text-center text-xl">
+                      {val.userId.location}
+                    </h1>
+                    <h1 className="ml-12 w-[200px] text-center text-xl">
+                      {val.dateTime}
+                    </h1>
+                  </div>
+                ))
+              ) : (
+                <div className="text-center w-full mt-4">No customers to display</div>
+              )}
             </div>
           </div>
         </div>

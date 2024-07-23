@@ -12,7 +12,7 @@ export const loginUser = async (credential) => {
     console.log('Login Response',data);
     const token = data.data.token;
     const role = data.data.role
-    if (token && role) {
+    if (token) {
       localStorage.setItem("token", token);
 
     }
